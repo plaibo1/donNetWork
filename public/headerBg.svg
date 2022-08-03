@@ -1,0 +1,150 @@
+<svg
+      width="1920"
+      height="1080"
+      viewBox="0 0 1920 1080"
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <style>
+        .box_shadow {
+          box-shadow: -5px -5px 20px -10px #1d03ff;
+        }
+        .shadow_right {
+          -webkit-filter: drop-shadow(-5px -5px 15px #1d03ff);
+          filter: drop-shadow(-5px -5px 15px #1d03ff);
+        }
+        .shadow_left{
+          -webkit-filter: drop-shadow(5px 5px 15px #1d03ff);
+          filter: drop-shadow(5px 5px 15px #1d03ff);
+        }
+      </style>
+      <defs>
+        <linearGradient id="gradient__0" x1="0" y1="0" x2="0" y2="1">
+          <stop stop-color="#1d03ff" offset="0.0%" />
+<stop stop-color="#2b3cff" offset="12.5%" />
+<stop stop-color="#7f86f3" offset="25.0%" />
+<stop stop-color="#efedff" offset="37.5%" />
+<stop stop-color="white" offset="50.0%" />
+<stop stop-color="#efedff" offset="62.5%" />
+<stop stop-color="#7f86f3" offset="75.0%" />
+<stop stop-color="#2b3cff" offset="87.5%" />
+<stop stop-color="#1d03ff" offset="100.0%" />
+        </linearGradient>
+
+       <filter id="grain" x="-960" y="-540" width="3840" height="2160" filterUnits="userSpaceOnUse">>
+        <feFlood flood-color="#ffffff" result="neutral-gray" />
+  
+        <feTurbulence
+          in="neutral-gray"
+          type="fractalNoise"
+          baseFrequency="2.5"
+          numOctaves="100"
+          stitchTiles="stitch"
+          result="noise"
+        />
+  
+        <feColorMatrix
+          in="noise"
+          type="saturate"
+          values="0"
+          result="destaturatedNoise"
+        ></feColorMatrix>
+  
+        <feComponentTransfer in="desaturatedNoise" result="theNoise">
+          <feFuncA type="table" tableValues="0 0 0.4 0"></feFuncA>
+        </feComponentTransfer>
+  
+        <feBlend
+          in="SourceGraphic"
+          in2="theNoise"
+          mode="soft-light"
+          result="noisy-image"
+        />
+      </filter>}
+      </defs>
+
+      <g filter="url(#grain)">
+        <rect width="1920" height="1080" fill="#1d03ff"/>
+        <rect
+              class=""
+              id="rect__4"
+              x="853.3333333333334"
+              y="240"
+              width="213.33333333333334"
+              height="600"
+              fill="url(#gradient__0)"
+            />
+<rect
+              class="shadow_left"
+              id="rect__5"
+              x="1066.6666666666667"
+              y="180"
+              width="213.33333333333334"
+              height="720"
+              fill="url(#gradient__0)"
+            />
+<rect
+              class="shadow_left"
+              id="rect__6"
+              x="1280"
+              y="120"
+              width="213.33333333333334"
+              height="840"
+              fill="url(#gradient__0)"
+            />
+<rect
+              class="shadow_left"
+              id="rect__7"
+              x="1493.3333333333333"
+              y="60"
+              width="213.33333333333334"
+              height="960"
+              fill="url(#gradient__0)"
+            />
+<rect
+              class="shadow_left"
+              id="rect__8"
+              x="1706.6666666666667"
+              y="0"
+              width="213.33333333333334"
+              height="1080"
+              fill="url(#gradient__0)"
+            />
+<rect
+              class="shadow_right"
+              id="rect__3"
+              x="640"
+              y="180"
+              width="213.33333333333334"
+              height="720"
+              fill="url(#gradient__0)"
+            />
+<rect
+              class="shadow_right"
+              id="rect__2"
+              x="426.6666666666667"
+              y="120"
+              width="213.33333333333334"
+              height="840"
+              fill="url(#gradient__0)"
+            />
+<rect
+              class="shadow_right"
+              id="rect__1"
+              x="213.33333333333334"
+              y="60"
+              width="213.33333333333334"
+              height="960"
+              fill="url(#gradient__0)"
+            />
+<rect
+              class="shadow_right"
+              id="rect__0"
+              x="0"
+              y="0"
+              width="213.33333333333334"
+              height="1080"
+              fill="url(#gradient__0)"
+            />
+      </g>
+    </svg>
