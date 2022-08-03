@@ -41,14 +41,23 @@ const client = contentful.createClient({
 // get data from contentful
 export async function getStaticProps() {
 
-  const data = await client.getEntry('3AVRVdIxocAEEeNYtHOUDB')
+  try {
+    const data = await client.getEntry('3AVRVdIxocAEEeNYtHOUDB')
+    console.log('data', data)
 
-  console.log('data', data)
-
-  return {
-    props: {
-      title: data.fields.title,
-      updatedAt: data.sys.updatedAt
+    return {
+      props: {
+        title: data.fields.title,
+        updatedAt: data.sys.updatedAt
+      }
+    }
+  }
+  catch {
+    return {
+      props: {
+        title: null,
+        updatedAt: null
+      }
     }
   }
 
