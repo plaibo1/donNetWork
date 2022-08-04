@@ -2,11 +2,13 @@ import React, { useRef, useState } from 'react'
 import { useForm, Controller } from "react-hook-form";
 import NumberFormat from 'react-number-format';
 import {AiOutlineLoading3Quarters} from 'react-icons/ai'
+import Modal from '../Modal/Modal';
 
 const FormPopUp = ({setIsOpen}) => {
 
     const [showNumberForm, setShowNumberForm] = useState(true);
     const [loaded, setLoaded] = useState(false)
+    const [isError, setIsError] = useState(false)
 
     const {
         register,
@@ -18,19 +20,30 @@ const FormPopUp = ({setIsOpen}) => {
         reset
     } = useForm({ mode: "onBlur" })
 
-    const onSubmit = (data) => {
-        
+    const onSubmit = async (data) => {
+
         setLoaded(true);
 
-        fetch('api/mailer', {
-          method: 'post',
-          body: JSON.stringify(data)
-        })
-        .then(res => res.json())
-        .then(res => {
-            // setIsOpen(false)
-            setLoaded(false)
-        })
+        try {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/mailer`, {
+                method: 'post',
+                body: JSON.stringify(data),
+
+            })
+                .then(res => res.json())
+                .then(res => {
+                    setIsOpen(false)
+                    setLoaded(false)
+                    console.log(res)
+                })
+        }
+        catch (err) {
+            if (err) {
+                setIsError(true)
+                setShowNumberForm(false)
+                setLoaded(false)
+            }
+        }
     }
 
     return (
@@ -102,7 +115,22 @@ const FormPopUp = ({setIsOpen}) => {
                         </>
                             :
                         <>
-                            '123'
+                            {
+                                isError ?
+                                <div className="w-full bg-red-500 text-white px-5 py-3 rounded-lg relative">
+                                    <div className='mb-5'>
+                                        Произошла ошибка. Сейчас ведуться работы на сервере, но вы можете оставть заявку
+                                        по бесплатному номеру:
+                                    </div>
+                                    <button
+                                        onClick={() => setIsError(false)}
+                                        className='px-5 py-1 bg-red-400 hover:bg-red-700 absolute right-2 bottom-2 rounded-md'>
+                                        ок
+                                    </button>
+                                </div>
+                                :
+                                null
+                            }
                         </>
                     }
                 </div>
