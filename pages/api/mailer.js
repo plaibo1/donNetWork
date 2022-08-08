@@ -1,29 +1,27 @@
 const nodemailer = require('nodemailer');
 
-
+const transporter = nodemailer.createTransport({
+  host: 'smtp.mail.ru',
+  port: 465,
+  secure: true,
+    auth: {
+      user: process.env.NEXT_PUBLIC_EMAIL_LOGIN,
+      pass: process.env.NEXT_PUBLIC_EMAIL_PASSWORD
+    },
+  },
+  {
+    from: '«ООО» Донтехсвязь🌐 <lyskov.2000@mail.ru>'
+  }
+);
 
 
 export default async (req, res) => {
+  
+  const {phone} = JSON.parse(req.body);
+
+  const msg = null
 
   try {
-
-    const transporter = nodemailer.createTransport({
-      host: 'smtp.mail.ru',
-      port: 465,
-      secure: true,
-        auth: {
-          user: 'lyskov.2000@mail.ru',
-          pass: 'ZrvGxqkZbWCxyhMUGbUa'
-        },
-      },
-      {
-        from: '«ООО» Донтехсвязь🌐 <lyskov.2000@mail.ru>'
-      }
-    );
-
-    const {phone} = JSON.parse(req.body);
-
-    const msg = null
 
     const emailRes = await transporter.sendMail({
       to: 'lyskov.2000@mail.ru',

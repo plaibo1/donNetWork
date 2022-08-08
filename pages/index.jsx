@@ -5,9 +5,10 @@ import Hero from '../components/Hero/Hero'
 import Modal from '../components/Modal/Modal'
 
 import * as contentful from 'contentful';
+import SwiperNews from '../components/SwiperNews/SwiperNews'
 
 
-export default function Home() {
+export default function Home({newsList}) {
 
   const [isOpen, setIsOpen] = useState(false)
 
@@ -25,6 +26,11 @@ export default function Home() {
         <FormPopUp setIsOpen={setIsOpen}/>
       </Modal>
 
+      <div className="mt-10">
+        <SwiperNews list={newsList}/>
+      </div>
+
+
       <div className='test'></div>
 
     </div>
@@ -34,29 +40,30 @@ export default function Home() {
 
 // created client
 const client = contentful.createClient({
-  space: 'em36vxt5gdit',
-  accessToken: '1jH1Zp2NGpmv2mDk_QR6-duBXdxgxecrTpkuNwsGsdE',
+  space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE,
+  accessToken: process.env.NEXT_PUBLIC_API_ACCESS_TOKEN,
 });
 
 // get data from contentful
 export async function getStaticProps() {
 
   try {
-    const data = await client.getEntry('3AVRVdIxocAEEeNYtHOUDB')
-    console.log('data', data)
+    const data = await client.getEntries({
+      content_type: 'donNetworkNews',
+    })
+
+    console.log("data------- ", data)
 
     return {
       props: {
-        title: data.fields.title,
-        updatedAt: data.sys.updatedAt
+        newsList: data
       }
     }
   }
   catch {
     return {
       props: {
-        title: null,
-        updatedAt: null
+        newsList: null
       }
     }
   }

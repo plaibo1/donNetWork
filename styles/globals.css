@@ -33,4 +33,38 @@ a {
   height: 200vh;
 }
 
+::-moz-selection {
+  color: #fff;
+  background: #69e5ab;
+}
 
+::selection {
+  color: #fff;
+  background: #69e5ab;
+}
+
+.swiper-wrapper {
+  padding-bottom: 50px;
+}
+
+.swiper-scrollbar-drag {
+  @apply !bg-slate-400
+}
+
+.swiper-scrollbar {
+  @apply !bg-slate-200
+}
+
+.myBg {
+  background-color: #92acff2a;
+}
+
+.myGradient::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(0deg, rgba(255,255,255,1) 33%, rgba(255,255,255,0) 100%);
+}
