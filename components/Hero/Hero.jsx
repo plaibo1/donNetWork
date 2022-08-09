@@ -12,14 +12,13 @@ const Hero = ({setIsOpen}) => {
       <div className={style.hero__bg}>
         <div className={style.hero__bg__grid}></div>
         <div className={style.hero__bg__blur}></div>
-        <div className={style.hero__bg__dots}></div>
       </div>
 
       <ContainerLayout>
         <div className="flex flex-col sm:flex-row items-center pt-32">
           <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:text-left mb-16 md:mb-0 items-center text-center">
 
-          <div className="sm:text-center lg:text-left lg:flex-grow flex flex-col">
+          <div className={`${style.dotsText} sm:text-center lg:text-left lg:flex-grow flex flex-col`}>
             <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
               <span className="block xl:inline">Домашний интернет</span>{' '}
               <span className="block text-baseColor xl:inline">в Ростове-на-Дону</span>
@@ -46,7 +45,7 @@ const Hero = ({setIsOpen}) => {
 
         </div>
 
-        <div className={`${style.dots} w-full lg:max-w-lg lg:w-full md:w-1/2 sm:w-5/6`}>
+        <div className={`${style.dotsTabs} w-full lg:max-w-lg lg:w-full md:w-1/2 sm:w-5/6`}>
           <span className='font-semibold text-2xl'>Выберите тариф</span>
           <Tabs />
         </div>
@@ -114,7 +113,9 @@ function Tabs() {
               className={({ selected }) =>
                 classNames(
                   'w-full rounded-lg py-2.5 text-sm font-medium leading-5',
+                  'transition duration-300 ease-in',
                   'ring-white ring-opacity-10 ring-offset-2 ring-offset-baseColor focus:outline-none focus:ring-2',
+                  'active:scale-90 active:bg-white',
                   selected
                     ? 'bg-white shadow text-baseColor'
                     : 'text-gray-800 hover:bg-gray-400 hover:text-white'
@@ -139,26 +140,26 @@ function Tabs() {
               {posts.map((post, index) => (
                 <div key={index}>
 
-                  <div className="flex items-center">
+                  <div className="flex flex-col items-center md:flex-row">
 
-                  <div className="flex">
-                    <div className='font-medium shadow-lg px-3 py-3 mr-5 flex flex-col items-center rounded-md'>
-                      <img className='w-20' src="/donnetworkNet.gif" alt="img" />
-                      <span className='block text-sm text-gray-700'>Скорость:</span>
-                      <span className='font-bold text-gray-800'>{post.speed}</span>
+                    <div className="flex mb-7 md:mb-0">
+                      <div className='font-medium shadow-lg px-3 py-3 mr-5 flex flex-col items-center rounded-md'>
+                        <img className='w-20' src="/donnetworkNet.gif" alt="img" />
+                        <span className='block text-sm text-gray-700'>Скорость:</span>
+                        <span className='font-bold text-gray-800'>{post.speed}</span>
+                      </div>
+
+                      <div className='font-medium shadow-lg px-3 py-3 md:mr-5 flex flex-col items-center rounded-md'>
+                        <img className='w-20' src="/donntetworkTv.gif" alt="img" />
+                        <span className='block text-sm text-gray-700'>Каналов:</span>
+                        <span className='font-bold text-gray-800'>{post.channelsCount}</span>
+                      </div>
                     </div>
 
-                    <div className='font-medium shadow-lg px-3 py-3 mr-5 flex flex-col items-center rounded-md'>
-                      <img className='w-20' src="/donntetworkTv.gif" alt="img" />
-                      <span className='block text-sm text-gray-700'>Каналов:</span>
-                      <span className='font-bold text-gray-800'>{post.channelsCount}</span>
+                    <div className='flex flex-col items-end md:ml-auto'>
+                      <span className='font-bold text-5xl'>{post.price}</span>
+                      <span>руб/мес</span>
                     </div>
-                  </div>
-
-                  <div className='flex flex-col items-end ml-auto'>
-                    <span className='font-bold text-5xl'>{post.price}</span>
-                    <span>руб/мес</span>
-                  </div>
 
                   </div>
 

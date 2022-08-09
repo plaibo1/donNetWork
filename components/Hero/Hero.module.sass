@@ -4,6 +4,7 @@
   z-index: 10
   background-color: rgba(13, 33, 255, 0.051)
   background: linear-gradient(180deg, rgba(43,60,255,0.07326680672268904) 0%, rgba(255,255,255,0) 100%)
+  overflow: hidden
   &__bg
     position: relative
     z-index: -1
@@ -24,18 +25,24 @@
       filter: blur(70px)
       border-radius: 50%
       opacity: 0.2
-    &__dots
-      width: 300px
-      height: 300px
-      position: absolute
-      top: 370px
-      left: 200px
-      -webkit-backdrop-filter: blur(13px) saturate(181%)
-      background: radial-gradient(circle, #e4e2e2 10%, transparent 11%)
-      background-size: 2em 2em
-      opacity: 1
       
-.dots
+.dotsText
+  position: relative
+  &::before
+    content: ""
+    position: absolute
+    width: 300px
+    height: 500px
+    top: 100px
+    left: -150px
+    -webkit-backdrop-filter: blur(13px) saturate(181%)
+    background: radial-gradient(circle, #e4e2e2 10%, transparent 11%)
+    background-size: 2em 2em
+    z-index: -1
+    @media screen and ( max-width: 502px )
+      display: none
+
+.dotsTabs
   position: relative
   &::before
     content: ""
@@ -48,3 +55,5 @@
     background: radial-gradient(circle, #e4e2e2 10%, transparent 11%)
     background-size: 2em 2em
     z-index: -1
+    @media screen and ( max-width: 502px )
+      top: -400px
