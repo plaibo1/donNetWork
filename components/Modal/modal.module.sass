@@ -9,23 +9,28 @@
     left: 0
     top: 0
     display: flex
+    align-items: center
+    justify-content: center
     opacity: 0
     pointer-events: none
     transition: opacity 0.3s ease
-    z-index: 101
+    z-index: 9999
     &__content
         position: relative
-        max-height: 70vh
+        max-height: 80vh
         overflow-y: auto
         margin: auto
-        z-index: 9999
         opacity: 0
         transform: translateY(200px)
         transition: all .3s ease
         box-shadow: none
+        border-radius: 0.5rem
         &.active
             opacity: 1
             transform: translateY(0)
+            @media screen and ( max-width: 425px )
+                transform: translateY(-10px)
+                
     &.active
         opacity: 1
         pointer-events: all

@@ -1,11 +1,13 @@
 import { Transition } from '@headlessui/react'
+import { Popover } from '@headlessui/react'
+
 import { Fragment, useState } from 'react'
 
 import style from './navbar.module.scss'
 
 import Link from 'next/link'
 
-import { Popover } from '@headlessui/react'
+import { motion, AnimatePresence  } from "framer-motion"
 
 import { HiChevronDown } from 'react-icons/hi'
 import { HiOutlineWifi } from 'react-icons/hi'
@@ -20,7 +22,7 @@ const Navbar = () => {
   return (
     <>
 
-      <nav className={`${style.navBg} nav-bg z-max fixed w-full top-0 p-4`}>
+      <nav className={`${style.navBg} nav-bg z-mid fixed w-full top-0 px-4 py-1 md:p-4`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
@@ -46,7 +48,7 @@ const Navbar = () => {
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 type="button"
-                className="bg-gray-900 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-baseColor hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                className="bg-white shadow-md inline-flex items-center justify-center p-2 rounded-md transition active:bg-baseColor active:scale-75"
                 aria-controls="mobile-menu"
                 aria-expanded="false"
               >
@@ -91,21 +93,16 @@ const Navbar = () => {
           </div>
         </div>
 
-        <Transition
-          show={isOpen}
-          enter="transition ease-out duration-100 transform"
-          enterFrom="opacity-0 scale-95"
-          enterTo="opacity-100 scale-100"
-          leave="transition ease-in duration-75 transform"
-          leaveFrom="opacity-100 scale-100"
-          leaveTo="opacity-0 scale-95"
-        >
-          
-          <div className='md:hidden'>
-            <NavContent />
-          </div>
+        <AnimatePresence>
+        {
+          isOpen && (
+            <motion.div initial={{opacity: 0, height: 0, y: -100}} animate={{opacity: 1, height: 'auto', y:0}} exit={{opacity: 0, height: 0, y:-100, scale: 0}}>
+              <NavContent />
+            </motion.div>
+          )
+        }
+        </AnimatePresence>
 
-        </Transition>
       </nav>
 
     </>
@@ -155,14 +152,13 @@ const NavContent = () => {
         </a>
       </Link>
 
-
       <DropdownItem solutions={solutions} />
 
       <a
         href="#"
         className="text-gray-800 hover:bg-slate-100 hover:text-baseColor px-3 py-2 rounded-md text-sm font-medium"
       >
-        Team
+        Для бизнеса
       </a>
 
       <a
@@ -185,8 +181,6 @@ const NavContent = () => {
       >
         Reports
       </a>
-
-      <a href='#' className="absolute right-0 text-gray-800 hover:bg-slate-100 hover:text-baseColor px-3 py-2 rounded-md text-sm font-medium"> +7 999 299 99 99</a>
 
     </div>
   )

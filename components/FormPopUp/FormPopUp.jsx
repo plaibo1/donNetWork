@@ -1,8 +1,9 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import { useForm, Controller } from "react-hook-form";
 import NumberFormat from 'react-number-format';
 import {AiOutlineLoading3Quarters} from 'react-icons/ai'
-import Modal from '../Modal/Modal';
+import style from './formPopUp.module.sass'
+import Image from 'next/image'
 
 const FormPopUp = ({setIsOpen}) => {
 
@@ -47,19 +48,19 @@ const FormPopUp = ({setIsOpen}) => {
     }
 
     return (
-        <div className="w-96">
-            <div className="relative z-10 h-auto p-8 py-10 overflow-hidden bg-white rounded-lg px-7">
-                <h3 className="mb-6 text-2xl font-medium text-center">Связаться со специалистом</h3>
+        <div className={`${style.formPopUpWidth}`}>
+            <div className="relative z-10 h-auto px-5 py-10 overflow-hidden bg-white rounded-lg sm:px-7">
 
+                <h3 className="mb-6 text-2xl font-medium text-center">Связаться со специалистом</h3>
 
                 <div className='mb-8 w-full flex justify-center'>
                     <button
-                        className={`${showNumberForm ? 'bg-baseColor text-white' : 'bg-white text-gray-800'} rounded-lg py-2.5 px-5 text-sm font-medium leading-5 ring-white ring-opacity-10 ring-offset-2 
+                        className={`${showNumberForm ? 'bg-baseColor text-white' : 'bg-white text-gray-800'} rounded-lg py-2.5 px-3 sm:px-5 text-xs sm:text-sm font-medium leading-5 ring-white ring-opacity-10 ring-offset-2 
                                 ring-offset-baseColor focus:outline-none focus:ring-2 shadow mr-5`}
-                        onClick={() => setShowNumberForm(true)} >Подключить услугу</button>
+                        onClick={() => setShowNumberForm(true)}>Подключить услугу</button>
 
                     <button
-                        className={`${!showNumberForm ? 'bg-baseColor text-white' : 'bg-white text-gray-800'} rounded-lg py-2.5 px-5 text-sm font-medium leading-5 ring-white ring-opacity-10 ring-offset-2 
+                        className={`${!showNumberForm ? 'bg-baseColor text-white' : 'bg-white text-gray-800'} rounded-lg px-3 py-2.5 sm:px-5 text-xs sm:text-sm font-medium leading-5 ring-white ring-opacity-10 ring-offset-2 
                                 ring-offset-baseColor focus:outline-none focus:ring-2 shadow`}
                         onClick={() => setShowNumberForm(false)} >Вопрос в техподдержку</button>
                 </div>
@@ -67,6 +68,11 @@ const FormPopUp = ({setIsOpen}) => {
                 <div className="h-72">
                     {
                         showNumberForm ? <>
+
+                            <p className='text-gray-500 text-xs md:text-base mb-3'>
+                                Оформить заявку, получить информацию о тарифах и подключении
+                            </p>
+
                             <form onSubmit={handleSubmit(onSubmit)}>
 
                                 <label>
@@ -131,8 +137,38 @@ const FormPopUp = ({setIsOpen}) => {
                                 :
                                 null
                             }
+
+                            <div>
+
+                                <p className='text-gray-500 text-xs md:text-base mb-3'>
+                                    Вопросы о работе оборудования, платежах, смене тарифа, подключении услуг
+                                </p>
+
+                                <div className='z-20'>
+
+                                    <div className='-mb-8 -z-10 relative w-full flex justify-center'>
+                                        <Image 
+                                            src='/rocket.png'
+                                            alt='call us image'
+                                            width={123}
+                                            height={150}
+                                        />
+                                    </div>
+                                    
+
+                                    <div className='bg-slate-200 p-4 rounded-lg z-10'>
+                                        <div className='mb-3 font-normal text-base'>
+                                            Для оперативного решения вопроса позвоните по бесплатному телефону:
+                                        </div>
+                                        <a href="tel:+1234567890" className='text-baseColor text-2xl font-medium'>+7 (863) 202-00-00</ a>
+                                    </div>
+                                </div>
+
+                            </div>
+
                         </>
                     }
+
                 </div>
 
             </div>

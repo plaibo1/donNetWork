@@ -11,6 +11,7 @@ import { useState } from 'react';
 
 import { FaTimes } from 'react-icons/fa'
 import { CgArrowLongRight } from 'react-icons/cg'
+import { HeadingLeft } from '../Headings/Headings';
 
 export default function SwiperNews({list}) {
 
@@ -19,11 +20,7 @@ export default function SwiperNews({list}) {
   return (
     <ContainerLayout>
 
-      <div className="mb-10">
-        <h2 className='text-5xl font-extrabold mb-1'>Новости компании</h2>
-        <span className='mb-4 block text-xl'>Оставайтесь в курсе!</span>
-        <div className='w-24 h-2 bg-baseColor rounded-xl'></div>
-      </div>
+      <HeadingLeft title='Новости компании' subTitle='Оставайтесь в курсе!' />
 
       <Swiper
         spaceBetween={50}
@@ -99,11 +96,11 @@ export default function SwiperNews({list}) {
             <motion.div
               layoutId={selectedItem.sys.id} 
               onMouseDown={e => e.stopPropagation()} 
-              className="mb-3 shadow-lg rounded-lg px-5 py-7 relative w-3/4 lg:w-1/2 bg-white">
+              className="mb-3 shadow-lg rounded-lg px-4 py-5 md:px-5 md:py-7 relative w-5/6 md:w-3/4 lg:w-1/2 bg-white">
 
-              <motion.div className='text-5xl font-bold mb-3'>{selectedItem.fields.title}</motion.div>
+              <motion.div className='text-3xl md:text-5xl font-bold mb-3'>{selectedItem.fields.title}</motion.div>
 
-              <motion.div className='text-xl font-bold mb-4 flex items-center' 
+              <motion.div className='text-lg md:text-xl font-bold mb-4 flex items-center' 
                 transition={{delay: 0.3}} initial={{x: -20, opacity: 0}} animate={{x: 0, opacity: 1}}>
 
                 <AiOutlineCalendar className='mr-1'/>
@@ -111,10 +108,10 @@ export default function SwiperNews({list}) {
 
               </motion.div>
 
-              <motion.p className='text-xl mb-1'>{selectedItem.fields.newsText}</motion.p>
+              <motion.p className='text-md max-h-72 overflow-auto md:text-xl mb-1'>{selectedItem.fields.newsText}</motion.p>
 
               <motion.button 
-                className='text-white bg-baseColor rounded-lg p-2 hover:bg-baseColor-20 absolute top-2 right-2' 
+                className='text-white bg-baseColor rounded-lg p-2 hover:bg-baseColor-20 absolute -top-3 -right-3 md:top-2 md:right-2' 
                 onClick={() => setSelectedItem(null)}>
                   <FaTimes />
               </motion.button>

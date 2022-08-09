@@ -26,6 +26,9 @@ module.exports = {
             zIndex: {
                 'mid': '999',
                 'max': '9999',
+            },
+            width: {
+                '128': '32rem',
             }
         }
     },

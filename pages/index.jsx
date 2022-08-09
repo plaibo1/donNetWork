@@ -52,7 +52,7 @@ export async function getStaticProps() {
       content_type: 'donNetworkNews',
     })
 
-    console.log("data------- ", data)
+    // console.log("data------- ", data)
 
     return {
       props: {

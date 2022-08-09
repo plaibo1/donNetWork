@@ -103,7 +103,7 @@ function Tabs() {
   })
 
   return (
-    <div className="w-full px-2 py-5 sm:px-0">
+    <div className="w-full px-0 md:px-2 py-5 sm:px-0">
       <Tab.Group>
 
         <Tab.List className="flex space-x-1 rounded-xl bg-gray-200 p-1">
