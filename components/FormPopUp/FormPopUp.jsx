@@ -49,23 +49,23 @@ const FormPopUp = ({setIsOpen}) => {
 
     return (
         <div className={`${style.formPopUpWidth}`}>
-            <div className="relative z-10 h-auto px-5 py-10 overflow-hidden bg-white rounded-lg sm:px-7">
+            <div className="relative z-10 px-5 pt-8 pb-8 sm:pb-12 h-auto bg-white rounded-lg sm:px-7">
 
                 <h3 className="mb-6 text-2xl font-medium text-center">Связаться со специалистом</h3>
 
                 <div className='mb-8 w-full flex justify-center'>
                     <button
-                        className={`${showNumberForm ? 'bg-baseColor text-white' : 'bg-white text-gray-800'} rounded-lg py-2.5 px-3 sm:px-5 text-xs sm:text-sm font-medium leading-5 ring-white ring-opacity-10 ring-offset-2 
+                        className={`${showNumberForm ? 'bg-baseColor text-white' : 'bg-white text-gray-800'} rounded-lg py-2.5 px-3 sm:px-5 text-xs sm:text-sm font-medium leading-4 sm:leading-5 ring-white ring-opacity-10 ring-offset-2 
                                 ring-offset-baseColor focus:outline-none focus:ring-2 shadow mr-5`}
                         onClick={() => setShowNumberForm(true)}>Подключить услугу</button>
 
                     <button
-                        className={`${!showNumberForm ? 'bg-baseColor text-white' : 'bg-white text-gray-800'} rounded-lg px-3 py-2.5 sm:px-5 text-xs sm:text-sm font-medium leading-5 ring-white ring-opacity-10 ring-offset-2 
+                        className={`${!showNumberForm ? 'bg-baseColor text-white' : 'bg-white text-gray-800'} rounded-lg px-3 py-2.5 sm:px-5 text-xs sm:text-sm font-medium leading-4 sm:leading-5 ring-white ring-opacity-10 ring-offset-2 
                                 ring-offset-baseColor focus:outline-none focus:ring-2 shadow`}
                         onClick={() => setShowNumberForm(false)} >Вопрос в техподдержку</button>
                 </div>
 
-                <div className="h-72">
+                <div className="sm:h-72">
                     {
                         showNumberForm ? <>
 
@@ -99,13 +99,11 @@ const FormPopUp = ({setIsOpen}) => {
                                         />
 
                                         <div className='text-red-500 h-8'>
-                                            {errors?.phone && <p>{errors?.phone?.message || 'Неправильный формат номера телефона.'}</p>}
+                                            {errors?.phone && <p>{errors?.phone?.message || 'Введите номера телефона'}</p>}
                                         </div>
                                     </>
                                     
                                 </label>
-
-
 
                                 <div className="block">
                                     <span className='text-sm block mb-1'>Звоним с 10:00 до 21:00.</span>
@@ -116,17 +114,19 @@ const FormPopUp = ({setIsOpen}) => {
                             </form>
 
                             <p className="w-full mt-4 text-sm text-center text-gray-500">
-                                Нажимая на кнопку «Жду звонка», вы предоставляете  ООО «Донтехсваязь»  согласие на обработку персональных данных.
+                                Нажимая на кнопку «Жду звонка», вы предоставляете  ООО «Донтехсваязь»  
+                                согласие на обработку персональных данных.
                             </p>
                         </>
                             :
                         <>
                             {
                                 isError ?
-                                <div className="w-full bg-red-500 text-white px-5 py-3 rounded-lg relative">
+                                <div className="w-full bg-red-500 text-white px-5 pt-3 pb-8 mb-5 rounded-lg relative">
                                     <div className='mb-5'>
-                                        Произошла ошибка. Сейчас ведуться работы на сервере, но вы можете оставть заявку
+                                        Произошла ошибка. Сейчас ведутся работы на сервере, но вы можете оставть заявку
                                         по бесплатному номеру:
+                                        <a href="tel:+7(863)202-00-00" className='px-2 py-1 bg-baseColor-20 rounded-md mt-2 inline-block'>+7 (863) 202-00-00</ a>
                                     </div>
                                     <button
                                         onClick={() => setIsError(false)}
@@ -160,7 +160,7 @@ const FormPopUp = ({setIsOpen}) => {
                                         <div className='mb-3 font-normal text-base'>
                                             Для оперативного решения вопроса позвоните по бесплатному телефону:
                                         </div>
-                                        <a href="tel:+1234567890" className='text-baseColor text-2xl font-medium'>+7 (863) 202-00-00</ a>
+                                        <a href="tel:+7(863)202-00-00" className='text-baseColor text-xl sm:text-2xl font-medium'>+7 (863) 202-00-00</ a>
                                     </div>
                                 </div>
 
