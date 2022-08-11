@@ -90,13 +90,15 @@ export default function SwiperNews({list}) {
             initial={{opacity: 0}}
             animate={{opacity: 1}} 
             exit={{opacity: 0}}
-            onMouseDown={() => setSelectedItem(null)} 
-            className="w-full h-screen flex justify-center items-center fixed top-0 left-0 z-max myBg backdrop-blur-sm">
+            onMouseDown={() => setSelectedItem(null)}
+            className="w-full h-screen flex justify-center items-center 
+            fixed top-0 left-0 z-max myBg backdrop-blur-sm">
 
             <motion.div
               layoutId={selectedItem.sys.id} 
               onMouseDown={e => e.stopPropagation()} 
-              className="mb-3 shadow-lg rounded-lg px-4 py-5 md:px-5 md:py-7 relative w-5/6 md:w-3/4 lg:w-1/2 bg-white">
+              className="mb-3 shadow-lg rounded-lg px-4 py-5 md:px-5 
+              md:py-7 relative w-5/6 md:w-3/4 lg:w-1/2 bg-white">
 
               <motion.div className='text-3xl md:text-5xl font-bold mb-3'>{selectedItem.fields.title}</motion.div>
 

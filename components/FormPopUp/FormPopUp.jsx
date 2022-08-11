@@ -1,51 +1,14 @@
-import React, { useState } from 'react'
-import { useForm, Controller } from "react-hook-form";
-import NumberFormat from 'react-number-format';
-import {AiOutlineLoading3Quarters} from 'react-icons/ai'
+import{ useState } from 'react'
+
 import style from './formPopUp.module.sass'
 import Image from 'next/image'
+import PhoneForm from '../PhoneForm/PhoneForm';
 
 const FormPopUp = ({setIsOpen}) => {
 
     const [showNumberForm, setShowNumberForm] = useState(true);
-    const [loaded, setLoaded] = useState(false)
     const [isError, setIsError] = useState(false)
 
-    const {
-        register,
-        control,
-        formState: {
-            errors
-        },
-        handleSubmit,
-        reset
-    } = useForm({ mode: "onBlur" })
-
-    const onSubmit = async (data) => {
-
-        setLoaded(true);
-
-        try {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/mailer`, {
-                method: 'post',
-                body: JSON.stringify(data),
-
-            })
-                .then(res => res.json())
-                .then(res => {
-                    setIsOpen(false)
-                    setLoaded(false)
-                    console.log(res)
-                })
-        }
-        catch (err) {
-            if (err) {
-                setIsError(true)
-                setShowNumberForm(false)
-                setLoaded(false)
-            }
-        }
-    }
 
     return (
         <div className={`${style.formPopUpWidth}`}>
@@ -73,50 +36,10 @@ const FormPopUp = ({setIsOpen}) => {
                                 Оформить заявку, получить информацию о тарифах и подключении
                             </p>
 
-                            <form onSubmit={handleSubmit(onSubmit)}>
-
-                                <label>
-
-                                    <span className='block mb-3 font-medium'>Контактный номер</span>
-
-                                    <>
-                                        <Controller
-                                            control={control}
-                                            name="phone"
-                                            defaultValue=""
-                                            rules={{ required: true, message: 'test test test' }}
-
-                                            render={({ field: { onChange, ref, name, value } }) => (
-                                                <NumberFormat
-                                                    format="+7 (###) ### ## ##"
-                                                    mask='_'
-                                                    name={name}
-                                                    value={value}
-                                                    onChange={onChange}
-                                                    className="block w-full px-4 py-3 border-2 border-transparent border-gray-200 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none"
-                                                />
-                                            )}
-                                        />
-
-                                        <div className='text-red-500 h-8'>
-                                            {errors?.phone && <p>{errors?.phone?.message || 'Введите номера телефона'}</p>}
-                                        </div>
-                                    </>
-                                    
-                                </label>
-
-                                <div className="block">
-                                    <span className='text-sm block mb-1'>Звоним с 10:00 до 21:00.</span>
-                                    <button className="w-full px-3 py-4 font-medium text-white bg-blue-600 rounded-lg" disabled={loaded}>
-                                        {loaded ? <AiOutlineLoading3Quarters className='mx-auto h-5 loading text-xl'/> : "Жду звонка"}
-                                    </button>
-                                </div>
-                            </form>
-
-                            <p className="w-full mt-4 text-sm text-center text-gray-500">
-                                Нажимая на кнопку «Жду звонка», вы предоставляете  ООО «Донтехсваязь»  
-                                согласие на обработку персональных данных.
-                            </p>
+                            <PhoneForm 
+                                setIsOpen={setIsOpen}
+                                setIsError={setIsError} 
+                                setShowNumberForm={setShowNumberForm}/>
                         </>
                             :
                         <>

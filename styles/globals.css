@@ -21,6 +21,19 @@ a {
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
+*::-webkit-scrollbar {
+  width: 5px;
+}
+*::-webkit-scrollbar-track {
+  @apply bg-slate-200;
+}
+
+*::-webkit-scrollbar-thumb {
+  @apply bg-baseColor;
+  border-radius: 20px;
+  border: none
+}
+
 .loading {
   animation: load .4s linear infinite;
 }
