@@ -102,15 +102,17 @@ export default function SwiperNews({list}) {
 
               <motion.div className='text-3xl md:text-5xl font-bold mb-3'>{selectedItem.fields.title}</motion.div>
 
-              <motion.div className='text-lg md:text-xl font-bold mb-4 flex items-center' 
+              <motion.div className='text-lg md:text-xl font-bold mb-4 
+                flex items-center' 
                 transition={{delay: 0.3}} initial={{x: -20, opacity: 0}} animate={{x: 0, opacity: 1}}>
 
                 <AiOutlineCalendar className='mr-1'/>
                 {selectedItem.sys.createdAt.split('T')[0].replace(/-/g, '.')}
-
               </motion.div>
 
-              <motion.p className='text-md max-h-72 overflow-auto md:text-xl mb-1'>{selectedItem.fields.newsText}</motion.p>
+              <motion.p className='text-md max-h-72 overflow-auto md:text-xl mb-1 pr-4 sm:pr-2'>
+                {selectedItem.fields.newsText}
+              </motion.p>
 
               <motion.button 
                 className='text-white bg-baseColor rounded-lg p-2 hover:bg-baseColor-20 absolute -top-3 -right-3 md:top-2 md:right-2' 

@@ -2,7 +2,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import PhoneForm from '../PhoneForm/PhoneForm'
 import { Tab } from '@headlessui/react'
 import { useState } from "react"
-
+import { FaTimes } from 'react-icons/fa'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -73,7 +73,7 @@ function Tabs({categories}) {
                         </div>
                       </div>
 
-                      <div className='flex flex-col items-end md:ml-auto'>
+                      <div className='flex flex-col items-end sm:ml-auto sm:mr-3'>
                         <span className='font-bold text-5xl'>{post.price}</span>
                         <span>руб/мес</span>
                       </div>
@@ -87,7 +87,7 @@ function Tabs({categories}) {
                     <button
                       onClick={() => setSelectedItem(post)}
                       className="w-full mt-10 flex items-center justify-center px-8 py-3 border border-transparent 
-                    text-base font-medium rounded-md text-white bg-baseColor hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"
+                        text-base font-medium rounded-md text-white bg-baseColor hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"
                     >
                       Выбрать тариф
                     </button>
@@ -117,27 +117,35 @@ function Tabs({categories}) {
               <motion.div 
                 layoutId={selectedItem.categoryId}
                 onMouseDown={e => e.stopPropagation()}
-                className='p-5 bg-white rounded-xl text-4xl w-72 sm:w-128 
-                relative h-96 overflow-auto sm:h-auto'
-              >
+                className='p-5 sm:p-8 bg-white rounded-xl text-4xl w-72 sm:w-128 
+                  relative overflow-auto h-100 sm:h-auto'>
 
-                <h3 className='text-3xl font-semibold mb-3 sm:mb-5'>
+                <div 
+                  className="absolute right-1 top-1 bg-baseColor 
+                  text-white rounded-lg text-xl w-8 h-8 flex justify-center items-center
+                  active:scale-95 cursor-pointer hover:bg-baseColor-20"
+                  onClick={() => setSelectedItem(null)}
+                  >
+                  <FaTimes/>
+                </div>
+
+                <motion.h3 className='text-base sm:text-2xl font-semibold mb-3 sm:mb-5'>
                   Вы выбрали тариф: {' '}
                   <span className='text-baseColor font-bold'>
                     {Object.keys(categories)[selectedItem.categoryId - 1]}
                   </span>
-                </h3>
+                </motion.h3>
 
                 {
                   !isError ? <>
 
+                  {/* mini cards */}
                   <div className="flex flex-row-reverse justify-between items-center">
 
                     {/* price */}
                     <div className="text-3xl sm:text-5xl flex flex-col items-end font-bold">
                       {selectedItem.price} <span className="text-sm font-normal">руб/мес</span>
                     </div>
-
 
                     {/* icons and properties */}
                     <div className="inline-flex flex-col sm:flex-row sm-flex mb-3 sm:mb-5">
@@ -149,7 +157,7 @@ function Tabs({categories}) {
                           </div>
                         </div>
 
-                        <div className='font-medium shadow-lg flex items-center rounded-md py-3 pl-1 pr-3 w-40'>
+                        <div className='font-medium shadow-lg flex items-center rounded-md py-3 pl-1 pr-3 w-40 sm:w-32'>
                           <img className='w-10 mr-2' src="/donntetworkTv.gif" alt="img" />
                           <div>
                             <span className='block text-sm text-gray-700'>Каналов:</span>
@@ -166,8 +174,8 @@ function Tabs({categories}) {
 
                   </>
                   :
-                  // ====== error ====== //
-                  <div className="w-full bg-red-500 text-white px-5 pt-3 pb-8 mb-5 rounded-lg relative">
+                  // ====== if error ====== //
+                  <motion.div className="w-full bg-red-500 text-white px-5 pt-3 pb-8 mb-5 rounded-lg relative">
                     <div className='mb-5 text-base sm:text-xl'>
                       Произошла ошибка. Сейчас ведутся работы на сервере, но вы можете оставть заявку
                       по бесплатному номеру: <br />
@@ -178,7 +186,7 @@ function Tabs({categories}) {
                       className='px-5 py-1 bg-red-400 text-base hover:bg-red-700 absolute right-2 bottom-2 rounded-md'>
                       ок
                     </button>
-                  </div>
+                  </motion.div>
                 }
                 
 
