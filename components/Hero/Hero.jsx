@@ -5,46 +5,9 @@ import Tabs from '../Tabs/Tabs'
 
 
 
-const Hero = ({ setIsOpen }) => {
+const Hero = ({ setIsOpen, categories }) => {
 
-  let [categories] = useState({
-    "Старт": [
-      {
-        title: 'Быстрее скачивай файлы, играй в онлайн-игры и смотри фильмы без зависаний на нескольких устройствах',
-        channelsCount: '136',
-        speed: '50 Мбит/сек',
-        price: '650',
-        categoryId: '1',
-      },
-    ],
-    "Комфорт": [
-      {
-        title: 'Быстрее скачивай файлы, играй в онлайн-игры и смотри фильмы без зависаний на нескольких устройствах',
-        channelsCount: '202',
-        speed: '100 Мбит/сек',
-        price: '800',
-        categoryId: '2',
-      },
-    ],
-    "Премиум": [
-      {
-        title: 'Сверхскоростной интернет для любых задач. Работай, играй, моментально скачивай файлы',
-        channelsCount: '297',
-        speed: '100 Мбит/сек',
-        price: '900',
-        categoryId: '3',
-      },
-    ],
-    "Максимум": [
-      {
-        title: 'МЕГА Сверхскоростной интернет для любых задач. Работай, играй, моментально скачивай файлы',
-        channelsCount: '297',
-        speed: '500 Мбит/сек',
-        price: '1100',
-        categoryId: '4',
-      },
-    ],
-  })
+  
 
   return (
     <header className={`${style.hero}`}>
@@ -59,6 +22,7 @@ const Hero = ({ setIsOpen }) => {
           <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:text-left mb-16 md:mb-0 items-center text-center">
 
             <div className={`${style.dotsText} sm:text-center lg:text-left lg:flex-grow flex flex-col`}>
+
               <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
                 <span className="block xl:inline">Домашний интернет</span>{' '}
                 <span className="block text-baseColor xl:inline">в Ростове-на-Дону</span>
@@ -76,7 +40,7 @@ const Hero = ({ setIsOpen }) => {
                     className="w-full flex items-center justify-center px-8 py-3 border border-transparent 
                     text-base font-medium rounded-md text-baseColor bg-indigo-100 hover:bg-indigo-200 md:py-4 md:text-lg md:px-10"
                   >
-                    Получить консультацию
+                    Оставить заявку
                   </button>
                 </div>
               </div>

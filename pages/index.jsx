@@ -6,11 +6,56 @@ import Modal from '../components/Modal/Modal'
 
 import * as contentful from 'contentful';
 import SwiperNews from '../components/SwiperNews/SwiperNews'
+import TariffSection from '../components/TariffSection/TariffSection'
+
 
 
 export default function Home({newsList}) {
 
-  const [isOpen, setIsOpen] = useState(false)
+  let [categories] = useState({
+    "Старт": [
+      {
+        title: 'Быстрее скачивай файлы, играй в онлайн-игры и смотри фильмы без зависаний на нескольких устройствах',
+        channelsCount: '136',
+        speed: '50 Мбит/сек',
+        price: '650',
+        image: '/start2.png',
+        categoryId: '1',
+      },
+    ],
+    "Комфорт": [
+      {
+        title: 'Быстрее скачивай файлы, играй в онлайн-игры и смотри фильмы без зависаний на нескольких устройствах',
+        channelsCount: '202',
+        speed: '100 Мбит/сек',
+        price: '800',
+        image: '/comfort.png',
+        categoryId: '2',
+      },
+    ],
+    "Премиум": [
+      {
+        title: 'Сверхскоростной интернет для любых задач. Работай, играй, моментально скачивай файлы',
+        channelsCount: '297',
+        speed: '100 Мбит/сек',
+        price: '900',
+        image: '/premium.png',
+        categoryId: '3',
+      },
+    ],
+    "Максимум": [
+      {
+        title: 'МЕГА Сверхскоростной интернет для любых задач. Работай, играй, моментально скачивай файлы',
+        channelsCount: '297',
+        speed: '500 Мбит/сек',
+        price: '1100',
+        image: '/maximum.png',
+        categoryId: '4',
+      },
+    ],
+  })
+
+  const [isOpen, setIsOpen] = useState(false) // Modal component
 
   return (
     <div>
@@ -20,15 +65,15 @@ export default function Home({newsList}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Hero setIsOpen={setIsOpen}/>
+      <Hero setIsOpen={setIsOpen} categories={categories}/>
 
       <Modal modalStatus={isOpen} setModalStatus={setIsOpen}>
         <FormPopUp setIsOpen={setIsOpen}/>
       </Modal>
 
-      <div className="mt-10">
-        <SwiperNews list={newsList}/>
-      </div>
+      <TariffSection categories={categories} />
+
+      <SwiperNews list={newsList}/>
 
 
       <div className='test'></div>

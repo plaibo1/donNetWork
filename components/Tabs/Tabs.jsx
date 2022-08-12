@@ -24,7 +24,6 @@ function Tabs({categories}) {
           <Tab.List className="flex space-x-1 rounded-xl bg-gray-200 p-1">
             {Object.keys(categories).map((category) => (
               <Tab
-                onClick={() => setSelectedItem(null)}
                 key={category}
                 className={({ selected }) =>
                   classNames(
