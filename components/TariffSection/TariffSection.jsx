@@ -19,7 +19,7 @@ const TariffSection = ({categories}) => {
               let tariff = item[0]
 
               return (
-                <div key={tariff.categoryId} className='box-border p-6 shadow-md rounded-2xl'>
+                <div key={tariff.categoryId} className='box-border p-6 shadow-md rounded-2xl overflow-hidden'>
 
                   <span className='block text-base sm:text-2xl font-semibold mb-3 sm:mb-5'>
                   {Object.keys(categories)[tariff.categoryId - 1]}

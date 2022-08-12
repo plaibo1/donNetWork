@@ -22,6 +22,9 @@ module.exports = {
                 'myGreen-30': '#96edc4',
                 'myGreen-40': '#a5efcd',
                 'kiwi': '#e7f0c0',
+                'satinLinen':'#e1dacf',
+                'comet':'#53596d',
+                'sweetCorn':'#fbeb99',
             },
             zIndex: {
                 'mid': '999',

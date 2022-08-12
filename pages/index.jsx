@@ -7,6 +7,7 @@ import Modal from '../components/Modal/Modal'
 import * as contentful from 'contentful';
 import SwiperNews from '../components/SwiperNews/SwiperNews'
 import TariffSection from '../components/TariffSection/TariffSection'
+import TelephonizationIndexPage from '../components/TelephonizationIndexPage/TelephonizationIndexPage'
 
 
 
@@ -75,6 +76,7 @@ export default function Home({newsList}) {
 
       <SwiperNews list={newsList}/>
 
+      <TelephonizationIndexPage />
 
       <div className='test'></div>
 
