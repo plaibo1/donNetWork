@@ -31,6 +31,7 @@ module.exports = {
                 'max': '9999',
             },
             width: {
+                '100': '28rem',
                 '128': '32rem',
             },
             height: {

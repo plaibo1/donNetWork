@@ -1,4 +1,6 @@
-
+import { motion } from 'framer-motion'
+import { forwardRef } from 'react'
+import style from './layout.module.sass'
 
 export function ContainerLayout({children})  {
   return (
@@ -7,3 +9,13 @@ export function ContainerLayout({children})  {
     </div>
   )
 }
+
+const PopUpWrapperForMotion = forwardRef((props, ref) => {
+  return (
+    <div className={style.popUpWrapper} ref={ref}>
+      {props.children}
+    </div>
+  )
+})
+
+export const PopUpWrapper = motion(PopUpWrapperForMotion)

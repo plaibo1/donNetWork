@@ -58,10 +58,12 @@ export default function SwiperNews({list}) {
                   }}
                 >
 
-                  <div className='text-2xl font-semibold mb-3'>{item.fields.title}</div>
+                  <div className='text-2xl font-semibold mb-3 h-8 truncate'>{item.fields.title}</div>
+
                   <div className='overflow-hidden h-24 text-ellipsis myGradient relative -z-10'>
                     <p className='text-sm'>{item.fields.newsText}</p>
                   </div>
+
                   <div className='-mt-6 mb-3 z-20'>
                     <motion.span
                       initial={{x: 200}}
@@ -71,6 +73,7 @@ export default function SwiperNews({list}) {
                       Подробнее <CgArrowLongRight className='ml-2'/>
                     </motion.span>
                   </div>
+
                   <div className='flex items-center'><AiOutlineCalendar className='mr-1'/> 
                     {item.sys.createdAt.split('T')[0].replace(/-/g, '.')}
                   </div>

@@ -16,16 +16,18 @@ export default function Home({newsList}) {
   let [categories] = useState({
     "Старт": [
       {
+        tariffName: 'Старт',
         title: 'Быстрее скачивай файлы, играй в онлайн-игры и смотри фильмы без зависаний на нескольких устройствах',
         channelsCount: '136',
         speed: '50 Мбит/сек',
         price: '650',
-        image: '/start2.png',
+        image: '/start3.png',
         categoryId: '1',
       },
     ],
     "Комфорт": [
       {
+        tariffName: 'Комфорт',
         title: 'Быстрее скачивай файлы, играй в онлайн-игры и смотри фильмы без зависаний на нескольких устройствах',
         channelsCount: '202',
         speed: '100 Мбит/сек',
@@ -36,6 +38,7 @@ export default function Home({newsList}) {
     ],
     "Премиум": [
       {
+        tariffName: 'Премиум',
         title: 'Сверхскоростной интернет для любых задач. Работай, играй, моментально скачивай файлы',
         channelsCount: '297',
         speed: '100 Мбит/сек',
@@ -46,6 +49,7 @@ export default function Home({newsList}) {
     ],
     "Максимум": [
       {
+        tariffName: 'Максимум',
         title: 'МЕГА Сверхскоростной интернет для любых задач. Работай, играй, моментально скачивай файлы',
         channelsCount: '297',
         speed: '500 Мбит/сек',

@@ -43,6 +43,11 @@ a {
   to { transform: rotate(360deg); }
 }
 
+/* tariff image rotate X */
+.rotate-x {
+  transform: rotateY(180deg);
+}
+
 .test {
   height: 200vh;
 }
