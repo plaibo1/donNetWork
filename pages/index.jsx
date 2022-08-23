@@ -8,7 +8,8 @@ import * as contentful from 'contentful';
 import SwiperNews from '../components/SwiperNews/SwiperNews'
 import TariffSection from '../components/TariffSection/TariffSection'
 import TelephonizationIndexPage from '../components/TelephonizationIndexPage/TelephonizationIndexPage'
-
+import AnyQuestion from '../components/AnyQuestion/AnyQuestion'
+import Faq from '../components/Faq/Faq'
 
 
 export default function Home({newsList}) {
@@ -78,9 +79,13 @@ export default function Home({newsList}) {
 
       <TariffSection categories={categories} />
 
-      <SwiperNews list={newsList}/>
+      <SwiperNews list={newsList} />
 
       <TelephonizationIndexPage />
+
+      <AnyQuestion setIsOpen={setIsOpen}/>
+
+      <Faq setIsOpen={setIsOpen} />
 
       <div className='test'></div>
 

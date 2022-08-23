@@ -29,8 +29,6 @@ const Hero = ({ setIsOpen, categories }) => {
     })
   })
 
-  console.log(scroll)
-
   return (
     <header className={`${style.hero}`}>
 

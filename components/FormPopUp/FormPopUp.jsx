@@ -79,7 +79,7 @@ const FormPopUp = ({setIsOpen}) => {
                                     </div>
                                     
 
-                                    <div className='bg-slate-200 p-4 rounded-lg z-10'>
+                                    <div className='bg-slate-100 p-4 rounded-lg z-10'>
                                         <div className='mb-3 font-normal text-base'>
                                             Для оперативного решения вопроса позвоните по бесплатному телефону:
                                         </div>

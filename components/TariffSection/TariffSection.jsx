@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { ContainerLayout, PopUpWrapper } from '../ContainerLayout/ContainerLayout'
 import { HeadingLeft } from '../Headings/Headings'
 import { motion, AnimatePresence } from "framer-motion"
-
+import { FaTimes } from 'react-icons/fa'
 import { BsLightningCharge } from 'react-icons/bs'
 import { GrChannel } from 'react-icons/gr'
 import PhoneForm from '../PhoneForm/PhoneForm'
@@ -89,7 +89,14 @@ const TariffSection = ({categories}) => {
           }
 
           <div className='bg-white flex justify-center items-center sm:col-span-2 rounded-2xl shadow-md p-6'>
-            <span className='font-bold text-4xl'>У нас бобма ТВ и ваще супер дупер</span>
+            <span className='font-bold text-4xl'>Пакет тв каналов с каждым тарифом от партнера! </span>
+            <div className='h-72 w-72 relative'>
+              <Image
+                src={'/astro.png'}
+                layout='fill'
+                objectFit='contain'
+              />
+            </div>
           </div>
 
         </div>
@@ -97,7 +104,13 @@ const TariffSection = ({categories}) => {
         <AnimatePresence>
           {
             tariffItem && (
-              <div className="fixed w-full h-screen top-0 left-0 flex items-center justify-center z-max" onClick={() => setTariffItem(null)}>
+              <motion.div 
+                className="w-full h-screen flex justify-center items-center 
+                  fixed top-0 left-0 z-max myBg backdrop-blur-sm"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={() => setTariffItem(null)}>
                 
                   <motion.div
                     onClick={(e) => e.stopPropagation()}
@@ -108,8 +121,18 @@ const TariffSection = ({categories}) => {
 
                     <div className='z-10 p-6'>
 
-                      <span className='block text-xl sm:text-2xl font-semibold mb-3 sm:mb-5'>
+                      <span className='flex text-xl sm:text-2xl font-semibold mb-3 sm:mb-5 items-center'>
+
                         {tariffItem.tariffName}
+
+                        {/* only max tariffItem */}
+                        {
+                          tariffItem.tariffName === 'Максимум' &&
+                          <span className="w-[50px] h-[50px] flex">
+                            <img src='/thundermin.webp' className='m-auto' alt='img' />
+                          </span>
+                        }
+
                       </span>
 
                       <span className='flex-col flex items-start'>
@@ -130,13 +153,13 @@ const TariffSection = ({categories}) => {
 
                     </div>
 
-                    {/* only max tariffItem */}
-                    {
-                      tariffItem.tariffName === 'Максимум' &&
-                      <div className="absolute right-3 top-3 bg-white shadow-sm w-[50px] h-[50px] flex rounded-lg">
-                        <img src='/thundermin.webp' className='m-auto' alt='img' />
-                      </div>
-                    }
+                    <div
+                      onClick={() => setTariffItem(null)}
+                      className="w-9 h-9 bg-baseColor absolute right-0 top-0 flex rounded-sm rounded-bl-md">
+                      <FaTimes className='m-auto text-white' />
+                    </div>
+
+                    
 
                     {/* image */}
                     <div className="h-[235px] relative -z-10 -mt-12">
@@ -152,10 +175,11 @@ const TariffSection = ({categories}) => {
                     <div className="bg-slate-50 px-6 py-7 w-full">
                       <PhoneForm />
                     </div>
+
                     </PopUpWrapper>
                   </motion.div>
                 
-              </div>
+              </motion.div>
             )
           }
         </AnimatePresence>

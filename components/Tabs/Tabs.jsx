@@ -115,85 +115,86 @@ function Tabs({categories}) {
               className="w-full h-screen flex justify-center items-center 
                   fixed top-0 left-0 z-max myBg backdrop-blur-sm">
 
-              <PopUpWrapper>
-                <motion.div
-                  layoutId={selectedItem.categoryId}
-                  onMouseDown={e => e.stopPropagation()}
-                  className='p-5 sm:p-8 bg-white rounded-xl text-4xl w-72 sm:w-128 
-                  relative overflow'>
+              <motion.div
+                layoutId={selectedItem.categoryId}
+                onMouseDown={e => e.stopPropagation()}
+                className='p-5 sm:p-8 bg-white rounded-xl text-4xl 
+                  w-[90%] sm:w-[90%] md:w-[60%] lg:w-[500px]
+                  max-h-[90vh] overflow-auto
+                relative'>
 
-                  <div
-                    className="absolute right-1 top-1 bg-baseColor 
+                <div
+                  className="absolute right-1 top-1 bg-baseColor 
                   text-white rounded-lg text-xl w-8 h-8 flex justify-center items-center
                   active:scale-95 cursor-pointer hover:bg-baseColor-20"
-                    onClick={() => setSelectedItem(null)}
-                  >
-                    <FaTimes />
-                  </div>
+                  onClick={() => setSelectedItem(null)}
+                >
+                  <FaTimes />
+                </div>
 
-                  <motion.h3 className='text-base sm:text-2xl font-semibold mb-3 sm:mb-5'>
-                    Вы выбрали тариф: {' '}
-                    <span className='text-baseColor font-bold'>
-                      {Object.keys(categories)[selectedItem.categoryId - 1]}
-                    </span>
-                  </motion.h3>
+                <motion.h3 className='text-base sm:text-2xl font-semibold mb-3 sm:mb-5'>
+                  Вы выбрали тариф: {' '}
+                  <span className='text-baseColor font-bold'>
+                    {Object.keys(categories)[selectedItem.categoryId - 1]}
+                  </span>
+                </motion.h3>
 
-                  {
-                    !isError ? <>
+                {
+                  !isError ? <>
 
-                      {/* mini cards */}
-                      <div className="flex flex-row-reverse justify-between items-center">
+                    {/* mini cards */}
+                    <div className="flex flex-row-reverse justify-between items-center">
 
-                        {/* price */}
-                        <div className="text-3xl sm:text-5xl flex flex-col items-end font-bold">
-                          {selectedItem.price} <span className="text-sm font-normal">руб/мес</span>
-                        </div>
-
-                        {/* icons and properties */}
-                        <div className="inline-flex flex-col sm:flex-row sm-flex mb-3 sm:mb-5">
-                          <div className='font-medium shadow-lg flex items-center rounded-md mr-5 pl-1 py-3 pr-3 w-40'>
-                            <img className='w-10 mr-2' src="/donnetworkNet.gif" alt="img" />
-                            <div>
-                              <span className='block text-sm text-gray-700'>Скорость:</span>
-                              <span className='block font-bold text-sm text-gray-800'>{selectedItem.speed}</span>
-                            </div>
-                          </div>
-
-                          <div className='font-medium shadow-lg flex items-center rounded-md py-3 pl-1 pr-3 w-40 sm:w-32'>
-                            <img className='w-10 mr-2' src="/donntetworkTv.gif" alt="img" />
-                            <div>
-                              <span className='block text-sm text-gray-700'>Каналов:</span>
-                              <span className='block font-bold text-sm text-gray-800'>
-                                {selectedItem.channelsCount}
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-
+                      {/* price */}
+                      <div className="text-3xl sm:text-5xl flex flex-col items-end font-bold">
+                        {selectedItem.price} <span className="text-sm font-normal">руб/мес</span>
                       </div>
 
-                      <PhoneForm setIsError={setIsError} setShowNumberForm={null} setIsOpen={null} />
-
-                    </>
-                      :
-                      // ====== if error ====== //
-                      <motion.div className="w-full bg-red-500 text-white px-5 pt-3 pb-8 mb-5 rounded-lg relative">
-                        <div className='mb-5 text-base sm:text-xl'>
-                          Произошла ошибка. Сейчас ведутся работы на сервере, но вы можете оставть заявку
-                          по бесплатному номеру: <br />
-                          <a href="tel:+7(863)202-00-00" className='px-2 py-1 bg-baseColor-20 rounded-md mt-2 inline-block'>+7 (863) 202-00-00</ a>
+                      {/* icons and properties */}
+                      <div className="inline-flex flex-col sm:flex-row sm-flex mb-3 sm:mb-5">
+                        <div className='font-medium shadow-lg flex items-center rounded-md mr-5 pl-1 py-3 pr-3 w-40'>
+                          <img className='w-10 mr-2' src="/donnetworkNet.gif" alt="img" />
+                          <div>
+                            <span className='block text-sm text-gray-700'>Скорость:</span>
+                            <span className='block font-bold text-sm text-gray-800'>{selectedItem.speed}</span>
+                          </div>
                         </div>
-                        <button
-                          onClick={() => setIsError(false)}
-                          className='px-5 py-1 bg-red-400 text-base hover:bg-red-700 absolute right-2 bottom-2 rounded-md'>
-                          ок
-                        </button>
-                      </motion.div>
-                  }
+
+                        <div className='font-medium shadow-lg flex items-center rounded-md py-3 pl-1 pr-3 w-40 sm:w-32'>
+                          <img className='w-10 mr-2' src="/donntetworkTv.gif" alt="img" />
+                          <div>
+                            <span className='block text-sm text-gray-700'>Каналов:</span>
+                            <span className='block font-bold text-sm text-gray-800'>
+                              {selectedItem.channelsCount}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <PhoneForm setIsError={setIsError} setShowNumberForm={null} setIsOpen={null} />
+
+                  </>
+                    :
+                    // ====== if error ====== //
+                    <motion.div className="w-full bg-red-500 text-white px-5 pt-3 pb-8 mb-5 rounded-lg relative">
+                      <div className='mb-5 text-base sm:text-xl'>
+                        Произошла ошибка. Сейчас ведутся работы на сервере, но вы можете оставть заявку
+                        по бесплатному номеру: <br />
+                        <a href="tel:+7(863)202-00-00" className='px-2 py-1 bg-baseColor-20 rounded-md mt-2 inline-block'>+7 (863) 202-00-00</ a>
+                      </div>
+                      <button
+                        onClick={() => setIsError(false)}
+                        className='px-5 py-1 bg-red-400 text-base hover:bg-red-700 absolute right-2 bottom-2 rounded-md'>
+                        ок
+                      </button>
+                    </motion.div>
+                }
 
 
-                </motion.div>
-              </PopUpWrapper>
+              </motion.div>
+
             </motion.div>
 
           )

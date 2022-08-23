@@ -2,11 +2,20 @@ import { useForm, Controller } from "react-hook-form";
 import NumberFormat from 'react-number-format';
 import {AiOutlineLoading3Quarters} from 'react-icons/ai'
 import { useState } from "react";
-
+import Link from 'next/link'
 import { motion } from 'framer-motion'
+import Modal from "../Modal/Modal";
+import { FaTimes } from "react-icons/fa";
 
 const PhoneForm = ({setIsError, setShowNumberForm, setIsOpen}) => {
   const [loaded, setLoaded] = useState(false)
+
+  const privacyStartText = `Настоящим я, далее – «Субъект Персональных Данных», во исполнение 
+  требований Федерального закона от 27.07.2006 г. № 152-ФЗ 
+  «О персональных данных» (с изменениями и дополнениями) свободно, 
+  своей волей и в своем интересе даю свое согласие ООО «Донтехсвязь»»...`
+
+  const [privacyShow, setPrivacyShow] = useState(false)
 
   const {
     register,
@@ -46,6 +55,8 @@ const PhoneForm = ({setIsError, setShowNumberForm, setIsOpen}) => {
   }
 
   return (
+    <>
+
     <form onSubmit={handleSubmit(onSubmit)}>
 
       <label>
@@ -93,9 +104,31 @@ const PhoneForm = ({setIsError, setShowNumberForm, setIsOpen}) => {
 
       <p className="w-full mt-4 text-sm text-center text-gray-500">
         Нажимая на кнопку «Жду звонка», вы предоставляете  ООО «Донтехсваязь»
-        согласие на обработку персональных данных.
+        согласие на обработку 
+        <span 
+          onMouseEnter={() => setPrivacyShow(true)}
+          onMouseLeave={() => setPrivacyShow(false)}
+          className="text-baseColor ml-1 cursor-pointer relative">
+          персональных данных.
+
+            {
+              privacyShow &&
+              <div className="mb-3 w-[250px] md:w-[300px] p-4 rounded-xl shadow-md bg-white text-xs 
+                text-slate-900 absolute bottom-0 right-0">
+                <span className="absolute top-1 right-1 text-base" onClick={() => setPrivacyShow(false)}><FaTimes/></span>
+                {privacyStartText} {' '}
+                <Link href={'/privacy'}><a className="text-baseColor">подробнее...</a></Link>
+              </div>
+            }
+
+        </span>
       </p>
     </form>
+    
+    
+    
+
+    </>
   )
 }
 
