@@ -17,4 +17,9 @@ export const PopUpWrapperForMotion = forwardRef((props, ref) => {
   )
 })
 
+PopUpWrapperForMotion.displayName = 'PopUpWrapperForMotion'
+
+
 export const PopUpWrapper = motion(PopUpWrapperForMotion)
+
+PopUpWrapper.displayName = 'PopUpWrapper';
