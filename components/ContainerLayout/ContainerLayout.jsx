@@ -9,8 +9,7 @@ export function ContainerLayout({children})  {
     </div>
   )
 }
-
-const PopUpWrapperForMotion = forwardRef((props, ref) => {
+export const PopUpWrapperForMotion = forwardRef((props, ref) => {
   return (
     <div className={style.popUpWrapper} ref={ref}>
       {props.children}
