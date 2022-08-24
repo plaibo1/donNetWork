@@ -81,9 +81,9 @@ export default function Home({newsList}) {
 
       <SwiperNews list={newsList} />
 
-      <TelephonizationIndexPage />
+      <TelephonizationIndexPage setIsOpen={setIsOpen} />
 
-      <AnyQuestion setIsOpen={setIsOpen}/>
+      <AnyQuestion setIsOpen={setIsOpen} />
 
       <Faq setIsOpen={setIsOpen} />
 

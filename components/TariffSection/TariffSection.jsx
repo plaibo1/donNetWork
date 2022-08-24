@@ -7,6 +7,7 @@ import { FaTimes } from 'react-icons/fa'
 import { BsLightningCharge } from 'react-icons/bs'
 import { GrChannel } from 'react-icons/gr'
 import PhoneForm from '../PhoneForm/PhoneForm'
+import { ButtonBase } from '../Buttons/Buttons'
 
 const TariffSection = ({categories}) => {
 
@@ -64,7 +65,7 @@ const TariffSection = ({categories}) => {
                     </div>
                   </div>
 
-                  <div className="bg-slate-50 px-6 py-7">
+                  <div className="bg-slate-50 px-4 sm:px-6 py-7">
 
                     <div className='h-[110px] lg:h-20'>{tariff.title}</div>
 
@@ -88,15 +89,24 @@ const TariffSection = ({categories}) => {
             })
           }
 
-          <div className='bg-white flex justify-center items-center sm:col-span-2 rounded-2xl shadow-md p-6'>
-            <span className='font-bold text-4xl'>Пакет тв каналов с каждым тарифом от партнера! </span>
-            <div className='h-72 w-72 relative'>
+          <div className='bg-white flex justify-center items-center sm:col-span-2 rounded-2xl shadow-md px-10 flex-col'>
+
+            <div>
+              <span className='block font-bold text-xl py-6 md:py-0 sm:text-2xl md:text-4xl mb-2 md:mb-10'>Пакет тв каналов с каждым тарифом от партнера! </span>
+              <div className='w-full sm:w-[300px]'>
+                <ButtonBase btnText={'Подробнее от ТВ'} click={() => alert('123')}/>
+              </div>
+            </div>
+
+            <div className='h-72 w-72 relative -mb-4 mt-5 sm:mb-0 sm:mt-0'>
               <Image
                 src={'/astro.png'}
                 layout='fill'
                 objectFit='contain'
               />
             </div>
+
+            
           </div>
 
         </div>

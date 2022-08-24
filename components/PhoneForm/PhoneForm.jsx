@@ -4,7 +4,6 @@ import {AiOutlineLoading3Quarters} from 'react-icons/ai'
 import { useState } from "react";
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import Modal from "../Modal/Modal";
 import { FaTimes } from "react-icons/fa";
 
 const PhoneForm = ({setIsError, setShowNumberForm, setIsOpen}) => {
@@ -55,8 +54,6 @@ const PhoneForm = ({setIsError, setShowNumberForm, setIsOpen}) => {
   }
 
   return (
-    <>
-
     <form onSubmit={handleSubmit(onSubmit)}>
 
       <label>
@@ -124,11 +121,6 @@ const PhoneForm = ({setIsError, setShowNumberForm, setIsOpen}) => {
         </span>
       </p>
     </form>
-    
-    
-    
-
-    </>
   )
 }
 

@@ -13,7 +13,7 @@ const AnyQuestion = ({setIsOpen}) => {
           <span className='block text-xl mb-5 sm:mb-10'>Остались вопросы по подключению?</span>
 
           <div className='flex flex-col xl:flex-row xl:items-end'>
-            <a href="tel:+7(863)202-00-00" className='text-2xl md:text-3xl lg:text-4xl font-bold'>+7 (863) 202-00-00</ a>
+            <a href="tel:+7(863)202-00-00" className='text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold'>+7 (863) 202-00-00</ a>
             <span className='xl:ml-5 text-xl mb-7 mt-5 xl:mt-0 md:mb-0'>или закажите обратный звонок</span>
           </div>
         </div>
