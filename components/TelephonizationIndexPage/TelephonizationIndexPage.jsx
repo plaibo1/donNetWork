@@ -54,9 +54,15 @@ const TelephonizationIndexPage = ({setIsOpen}) => {
               layoutId={selectedId}
             >
 
-              <p className='block text-xl sm:text-4xl font-bold mb-10 md:mb-12'>
+              <span className='block text-xl sm:text-4xl font-bold mb-2'>
                 Оставьте заявку
-              </p>
+              </span>
+
+              <span className='mb-10 block text-lg'>
+                Менеджер свяжется с вами, как можно скорее
+              </span>
+
+
 
               <div className='absolute top-2 right-2 bg-slate-900 w-7 flex h-7 
                 rounded-lg text-white cursor-pointer hover:bg-baseColor' 
