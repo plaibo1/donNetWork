@@ -7,7 +7,7 @@ import Image from 'next/image'
 import PhoneForm from '../PhoneForm/PhoneForm'
 import { FaTimes } from 'react-icons/fa'
 
-const TelephonizationIndexPage = ({setIsOpen}) => {
+const TelephonizationIndexPage = ({setIsSuccess}) => {
 
   const [selectedId, setSelectedId] = useState(null)
 
@@ -62,8 +62,6 @@ const TelephonizationIndexPage = ({setIsOpen}) => {
                 Менеджер свяжется с вами, как можно скорее
               </span>
 
-
-
               <div className='absolute top-2 right-2 bg-slate-900 w-7 flex h-7 
                 rounded-lg text-white cursor-pointer hover:bg-baseColor' 
                 onClick={() => setSelectedId(null)}>
@@ -72,7 +70,7 @@ const TelephonizationIndexPage = ({setIsOpen}) => {
               </div>
 
               <div>
-                <PhoneForm />
+                <PhoneForm setIsSuccess={setIsSuccess} setSelectedLayout={setSelectedId} />
               </div>
 
             </motion.div>

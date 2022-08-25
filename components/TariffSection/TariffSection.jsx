@@ -9,7 +9,7 @@ import { GrChannel } from 'react-icons/gr'
 import PhoneForm from '../PhoneForm/PhoneForm'
 import { ButtonBase } from '../Buttons/Buttons'
 
-const TariffSection = ({categories}) => {
+const TariffSection = ({categories, setIsSuccess}) => {
 
   const [tariffItem, setTariffItem] = useState(null);
 
@@ -89,24 +89,23 @@ const TariffSection = ({categories}) => {
             })
           }
 
-          <div className='bg-white flex justify-center items-center sm:col-span-2 rounded-2xl shadow-md px-10 flex-col'>
+          <div className='bg-white sm:col-span-2 rounded-2xl shadow-md px-10 flex-col'>
 
-            <div>
-              <span className='block font-bold text-xl py-6 md:py-0 sm:text-2xl md:text-4xl mb-2 md:mb-10'>Пакет тв каналов с каждым тарифом от партнера! </span>
+            <div> 
+              <span className='flex font-bold text-xl py-6 md:py-0 sm:text-2xl md:text-4xl mb-2 md:mb-10'>Пакет тв каналов с каждым тарифом от партнера! </span>
               <div className='w-full sm:w-[300px]'>
                 <ButtonBase btnText={'Подробнее от ТВ'} click={() => alert('123')}/>
               </div>
             </div>
 
-            <div className='h-72 w-72 relative -mb-4 mt-5 sm:mb-0 sm:mt-0'>
+            {/* <div className='h-72 w-72 relative -mb-4 mt-5 sm:mb-0 sm:mt-0'>
               <Image
-                src={'/astro.png'}
+                src={'/pillsB.png'}
                 layout='fill'
                 objectFit='contain'
               />
-            </div>
+            </div> */}
 
-            
           </div>
 
         </div>
@@ -183,7 +182,7 @@ const TariffSection = ({categories}) => {
                     </div>
 
                     <div className="bg-slate-50 px-6 py-7 w-full">
-                      <PhoneForm />
+                      <PhoneForm setIsSuccess={setIsSuccess} setSelectedLayout={setTariffItem}/>
                     </div>
 
                     </PopUpWrapper>
@@ -195,8 +194,6 @@ const TariffSection = ({categories}) => {
         </AnimatePresence>
 
       </ContainerLayout>
-
-
     </section>
   )
 }

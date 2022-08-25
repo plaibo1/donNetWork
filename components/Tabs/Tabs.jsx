@@ -3,13 +3,12 @@ import PhoneForm from '../PhoneForm/PhoneForm'
 import { Tab } from '@headlessui/react'
 import { useState } from "react"
 import { FaTimes } from 'react-icons/fa'
-import { PopUpWrapper } from "../ContainerLayout/ContainerLayout"
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-function Tabs({categories}) {
+function Tabs({categories, setIsSuccess}) {
 
   const [selectedItem, setSelectedItem] = useState(null)
 
@@ -135,7 +134,10 @@ function Tabs({categories}) {
                 <motion.h3 className='text-base sm:text-2xl font-semibold mb-3 sm:mb-5'>
                   Вы выбрали тариф: {' '}
                   <span className='text-baseColor font-bold'>
+
+                    {/* -----refactor it !!! ------ */}
                     {Object.keys(categories)[selectedItem.categoryId - 1]}
+
                   </span>
                 </motion.h3>
 
@@ -173,7 +175,13 @@ function Tabs({categories}) {
 
                     </div>
 
-                    <PhoneForm setIsError={setIsError} setShowNumberForm={null} setIsOpen={null} />
+                    <PhoneForm 
+                      setIsError={setIsError} 
+                      setShowNumberForm={null} 
+                      setIsOpen={null} 
+                      setIsSuccess={setIsSuccess}
+                      setSelectedLayout={setSelectedItem}
+                    />
 
                   </>
                     :

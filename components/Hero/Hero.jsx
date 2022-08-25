@@ -1,14 +1,14 @@
 import style from './Hero.module.sass'
 import { ContainerLayout } from '../ContainerLayout/ContainerLayout'
 import Tabs from '../Tabs/Tabs'
-import { motion, useTransform, useScroll, AnimatePresence } from 'framer-motion'
+import { motion, useScroll, AnimatePresence } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { BsTelephone } from 'react-icons/bs'
 
 
 
 
-const Hero = ({ setIsOpen, categories }) => {
+const Hero = ({ setIsOpen, categories, setIsSuccess }) => {
 
   const { scrollY } = useScroll()
 
@@ -90,7 +90,7 @@ const Hero = ({ setIsOpen, categories }) => {
 
           <div className={`${style.dotsTabs} w-full lg:max-w-lg lg:w-full md:w-1/2 sm:w-5/6`}>
             <span className='font-semibold text-2xl'>Выберите тариф</span>
-            <Tabs categories={categories} />
+            <Tabs categories={categories} setIsSuccess={setIsSuccess}/>
           </div>
 
         </div>

@@ -10,6 +10,8 @@ import TariffSection from '../components/TariffSection/TariffSection'
 import TelephonizationIndexPage from '../components/TelephonizationIndexPage/TelephonizationIndexPage'
 import AnyQuestion from '../components/AnyQuestion/AnyQuestion'
 import Faq from '../components/Faq/Faq'
+import SuccessModal from '../components/SuccessModal/SuccessModal'
+
 
 
 export default function Home({newsList}) {
@@ -61,7 +63,8 @@ export default function Home({newsList}) {
     ],
   })
 
-  const [isOpen, setIsOpen] = useState(false) // Modal component
+  const [isOpen, setIsOpen] = useState(false) // ModalFrom component
+  const [isSuccess, setIsSuccess] = useState(false) // ModalSuccess component
 
   return (
     <div>
@@ -71,17 +74,26 @@ export default function Home({newsList}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Hero setIsOpen={setIsOpen} categories={categories}/>
-
       <Modal modalStatus={isOpen} setModalStatus={setIsOpen}>
-        <FormPopUp setIsOpen={setIsOpen}/>
+        <FormPopUp setIsOpen={setIsOpen} setIsSuccess={setIsSuccess}/>
       </Modal>
 
-      <TariffSection categories={categories} />
+      <Modal modalStatus={isSuccess} setModalStatus={setIsSuccess}>
+        {
+          isSuccess && <SuccessModal setIsSuccess={setIsSuccess}/>
+        }
+      </Modal>
+
+
+      {/* page start */}
+
+      <Hero setIsOpen={setIsOpen} categories={categories} setIsSuccess={setIsSuccess} />
+
+      <TariffSection categories={categories} setIsSuccess={setIsSuccess}/>
 
       <SwiperNews list={newsList} />
 
-      <TelephonizationIndexPage setIsOpen={setIsOpen} />
+      <TelephonizationIndexPage setIsOpen={setIsOpen} setIsSuccess={setIsSuccess} />
 
       <AnyQuestion setIsOpen={setIsOpen} />
 
