@@ -23,6 +23,7 @@ const SuccessModal = ({setIsSuccess}) => {
                         width={140}
                         height={140}
                         src={'/thumbsUp.png'}
+                        priority
                     />
                 </motion.div>
                 
