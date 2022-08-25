@@ -79,9 +79,9 @@ function Tabs({categories, setIsSuccess}) {
 
                     </div>
 
-                    <h3 className="text-md leading-5 mt-8">
+                    <p className="text-md leading-5 mt-8">
                       {post.title}
-                    </h3>
+                    </p>
 
                     <button
                       onClick={() => setSelectedItem(post)}

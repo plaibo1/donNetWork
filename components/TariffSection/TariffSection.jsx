@@ -177,6 +177,7 @@ const TariffSection = ({categories, setIsSuccess}) => {
                           src={tariffItem.image}
                           layout='fill'
                           objectFit='contain'
+                          alt='tariff image'
                         />
                       </div>
                     </div>
