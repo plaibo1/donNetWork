@@ -6,10 +6,12 @@ import { BsTelephone } from 'react-icons/bs'
 import Image from 'next/image'
 import PhoneForm from '../PhoneForm/PhoneForm'
 import { FaTimes } from 'react-icons/fa'
+import ErrorAlert from '../ErrorAlert/ErrorAlert'
 
 const TelephonizationIndexPage = ({setIsSuccess}) => {
 
   const [selectedId, setSelectedId] = useState(null)
+  const [isError, setIsError] = useState(false)
 
   return (
     <>
@@ -70,7 +72,12 @@ const TelephonizationIndexPage = ({setIsSuccess}) => {
               </div>
 
               <div>
-                <PhoneForm setIsSuccess={setIsSuccess} setSelectedLayout={setSelectedId} />
+              {
+                !isError ?
+                <PhoneForm setIsSuccess={setIsSuccess} setSelectedLayout={setSelectedId} setIsError={setIsError}/>
+                :
+                <ErrorAlert setIsError={setIsError} />
+              }
               </div>
 
             </motion.div>

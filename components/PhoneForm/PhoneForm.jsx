@@ -7,6 +7,7 @@ import { motion } from 'framer-motion'
 import { FaTimes } from "react-icons/fa";
 
 const PhoneForm = ({setIsError, setShowNumberForm, setIsOpen, setIsSuccess, setSelectedLayout}) => {
+
   const [loaded, setLoaded] = useState(false)
 
   const privacyStartText = `Настоящим я, далее – «Субъект Персональных Данных», во исполнение 
@@ -49,7 +50,7 @@ const PhoneForm = ({setIsError, setShowNumberForm, setIsOpen, setIsSuccess, setS
     catch (err) {
       if (err) {
         console.log(err)
-        // setIsError(true)
+        setIsError(true)
         if (setShowNumberForm) setShowNumberForm(false)
         setLoaded(false)
       }
@@ -123,6 +124,7 @@ const PhoneForm = ({setIsError, setShowNumberForm, setIsOpen, setIsSuccess, setS
 
         </span>
       </p>
+
     </form>
   )
 }

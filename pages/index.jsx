@@ -1,10 +1,9 @@
+import * as contentful from 'contentful';
 import Head from 'next/head'
 import { useState } from 'react'
 import FormPopUp from '../components/FormPopUp/FormPopUp'
 import Hero from '../components/Hero/Hero'
 import Modal from '../components/Modal/Modal'
-
-import * as contentful from 'contentful';
 import SwiperNews from '../components/SwiperNews/SwiperNews'
 import TariffSection from '../components/TariffSection/TariffSection'
 import TelephonizationIndexPage from '../components/TelephonizationIndexPage/TelephonizationIndexPage'
@@ -64,7 +63,7 @@ export default function Home({newsList}) {
   })
 
   const [isOpen, setIsOpen] = useState(false) // ModalFrom component
-  const [isSuccess, setIsSuccess] = useState(false) // ModalSuccess component
+  const [isSuccess, setIsSuccess] = useState(true) // ModalSuccess component
 
   return (
     <div>

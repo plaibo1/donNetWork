@@ -8,10 +8,12 @@ import { BsLightningCharge } from 'react-icons/bs'
 import { GrChannel } from 'react-icons/gr'
 import PhoneForm from '../PhoneForm/PhoneForm'
 import { ButtonBase } from '../Buttons/Buttons'
+import ErrorAlert from '../ErrorAlert/ErrorAlert'
 
 const TariffSection = ({categories, setIsSuccess}) => {
 
   const [tariffItem, setTariffItem] = useState(null);
+  const [isError, setIsError] = useState(false)
 
   return (
     <section>
@@ -61,6 +63,7 @@ const TariffSection = ({categories, setIsSuccess}) => {
                         src={tariff.image}
                         layout='fill'
                         objectFit='contain'
+                        alt='донтехсвязь tariff image'
                       />
                     </div>
                   </div>
@@ -77,7 +80,7 @@ const TariffSection = ({categories, setIsSuccess}) => {
                     <button
                       onClick={() => setTariffItem(tariff)}
                       className="w-full flex items-center justify-center px-8 py-3 border border-transparent 
-                    text-base font-medium rounded-md text-baseColor bg-indigo-100 hover:bg-indigo-200 md:text-lg md:px-10"
+                        text-base font-medium rounded-md text-baseColor bg-indigo-100 hover:bg-indigo-200 md:text-lg md:px-10"
                     >
                       Выбрать тариф
                     </button>
@@ -182,9 +185,21 @@ const TariffSection = ({categories, setIsSuccess}) => {
                       </div>
                     </div>
 
-                    <div className="bg-slate-50 px-6 py-7 w-full">
-                      <PhoneForm setIsSuccess={setIsSuccess} setSelectedLayout={setTariffItem}/>
-                    </div>
+                    {
+                      !isError ? 
+                      <div className="bg-slate-50 px-6 py-7 w-full">
+                        <PhoneForm setIsSuccess={setIsSuccess} setIsError={setIsError} setSelectedLayout={setTariffItem}/>
+                      </div>
+
+                      :
+
+                      <div className='px-6'>
+                        <ErrorAlert  setIsError={setIsError}/>
+                      </div>
+                      
+                    }
+
+                    
 
                     </PopUpWrapper>
                   </motion.div>
