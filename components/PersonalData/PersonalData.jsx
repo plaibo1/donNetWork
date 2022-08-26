@@ -1,15 +1,18 @@
+import Link from 'next/link'
 import React from 'react'
+import { ButtonBase } from '../Buttons/Buttons'
 import { ContainerLayout } from '../ContainerLayout/ContainerLayout'
 
 const PersonalData = () => {
   return (
     <ContainerLayout>
-      <div>
+      <div className='mt-5 sm:mt-8 md:mt-14'>
         
         <div className='text-2xl md:text-4xl font-black mb-5'>
           Условия обработки персональных данных
         </div>
 
+        {/* text */}
         <div>
 
           <p className='mb-5'>
@@ -63,6 +66,16 @@ const PersonalData = () => {
             влечет ответственность в соответствии с действующим законодательством Российской Федерации.
           </p>
 
+        </div>
+
+        {/* link */}
+        <div className='mt-10 w-full flex justify-center'>
+        <Link href={'/'}>
+          <a className='w-full sm:w-[500px] flex items-center justify-center mr-10 px-8 py-3 border border-transparent 
+                        text-base font-medium rounded-md text-white bg-baseColor hover:bg-indigo-700 md:py-4 md:text-lg md:px-10'>
+                          Обратно на сайт
+        </a>
+        </Link>
         </div>
 
       </div>

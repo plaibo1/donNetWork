@@ -10,6 +10,7 @@ import TelephonizationIndexPage from '../components/TelephonizationIndexPage/Tel
 import AnyQuestion from '../components/AnyQuestion/AnyQuestion'
 import Faq from '../components/Faq/Faq'
 import SuccessModal from '../components/SuccessModal/SuccessModal'
+import Footer from '../components/Footer/Footer';
 
 
 
@@ -68,7 +69,7 @@ export default function Home({newsList}) {
   return (
     <div>
       <Head>
-        <title>Донтехсвязь</title>
+        <title>Донтехсвязь - интернет-провайдер в Ростове-на-Дону</title>
         <meta name="description" content="Интернет, ТВ и услуги телефонизации в Ростове-на-Дону для дома и бизнеса" />
       </Head>
 
@@ -96,8 +97,6 @@ export default function Home({newsList}) {
       <AnyQuestion setIsOpen={setIsOpen} />
 
       <Faq setIsOpen={setIsOpen} />
-
-      <div className='test'></div>
 
     </div>
 

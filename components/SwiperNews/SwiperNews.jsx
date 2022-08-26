@@ -101,9 +101,9 @@ export default function SwiperNews({list}) {
               layoutId={selectedItem.sys.id} 
               onMouseDown={e => e.stopPropagation()} 
               className="mb-3 shadow-lg rounded-lg px-4 py-5 md:px-5 
-              md:py-7 relative w-5/6 md:w-3/4 lg:w-1/2 bg-white">
+              md:py-7 relative w-5/6 md:w-3/4 lg:w-1/2 bg-white max-h-[80vh] overflow-auto">
 
-              <motion.div className='text-3xl md:text-5xl font-bold mb-3'>{selectedItem.fields.title}</motion.div>
+              <motion.div className='text-3xl md:text-5xl font-bold mb-3 mt-2'>{selectedItem.fields.title}</motion.div>
 
               <motion.div className='text-lg md:text-xl font-bold mb-4 
                 flex items-center' 
@@ -113,14 +113,14 @@ export default function SwiperNews({list}) {
                 {selectedItem.sys.createdAt.split('T')[0].replace(/-/g, '.')}
               </motion.div>
 
-              <motion.p className='text-md max-h-72 overflow-auto md:text-xl mb-1 pr-4 sm:pr-2'>
+              <motion.p className='text-md md:text-xl mb-1 pr-4 sm:pr-2'>
                 {selectedItem.fields.newsText}
               </motion.p>
 
               <motion.button 
-                className='text-white bg-baseColor rounded-lg p-2 hover:bg-baseColor-20 absolute -top-3 -right-3 md:top-2 md:right-2' 
+                className='text-white bg-baseColor rounded-lg w-7 h-7 flex hover:bg-baseColor-20 absolute top-2 right-2 active:scale-90' 
                 onClick={() => setSelectedItem(null)}>
-                  <FaTimes />
+                  <FaTimes className='m-auto' />
               </motion.button>
 
             </motion.div>

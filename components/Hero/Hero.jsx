@@ -56,30 +56,14 @@ const Hero = ({ setIsOpen, categories, setIsSuccess }) => {
               <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                 <div className="mt-3 sm:mt-0">
                   <motion.button
-                    layoutId='btnOnScrollToRight'
+                    initial={{opacity: 0, x: -50}}
+                    animate={{opacity: 1, x: 0}}
                     onClick={() => setIsOpen(true)}
                     className="w-full flex items-center justify-center px-8 py-3 border border-transparent 
                     text-base font-medium rounded-md text-baseColor bg-indigo-100 hover:bg-indigo-200 md:py-4 md:text-lg md:px-10"
                   >
                     Оставить заявку
                   </motion.button>
-
-                  <AnimatePresence>
-                  {
-                    scroll && (
-                      <motion.button
-                        layoutId={scroll}
-                        initial={{opacity: 0}}
-                        animate={{opacity: 1}}
-                        exit={{opacity: 0}}
-                        onClick={() => setIsOpen(true)}
-                        className="fixed bottom-2 right-2 w-14 h-14 flex bg-slate-200 rounded-full z-max"
-                      >
-                          <BsTelephone className='m-auto'/>
-                      </motion.button>
-                    )
-                  }
-                  </AnimatePresence>
 
                 </div>
               </div>

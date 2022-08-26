@@ -167,11 +167,11 @@ const TariffSection = ({categories, setIsSuccess}) => {
 
                     <div
                       onClick={() => setTariffItem(null)}
-                      className="w-9 h-9 bg-baseColor absolute right-0 top-0 flex rounded-sm rounded-bl-md">
+                      className="w-8 h-8 bg-baseColor absolute right-2 top-2 flex 
+                        hover:bg-baseColor-20 cursor-pointer rounded-lg active:scale-90">
                       <FaTimes className='m-auto text-white' />
                     </div>
 
-                    
 
                     {/* image */}
                     <div className="h-[235px] relative -z-10 -mt-12">

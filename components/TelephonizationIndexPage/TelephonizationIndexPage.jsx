@@ -60,7 +60,7 @@ const TelephonizationIndexPage = ({setIsSuccess}) => {
                 Оставьте заявку
               </span>
 
-              <span className='mb-10 block text-lg'>
+              <span className='mb-10 block text-base sm:text-lg'>
                 Менеджер свяжется с вами, как можно скорее
               </span>
 
