@@ -1,11 +1,16 @@
 import React from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import ConfettiFire from './Confetti'
+import useConfettiFire from './Confetti'
 
 const SuccessModal = ({setIsSuccess}) => {
+
+    const {fire, render} = useConfettiFire()
+
     return (
-        <div className='w-[300px] sm:w-[500px] h-[400px] p-8 bg-white text-center flex flex-col justify-between'>
+        <div 
+            onClick={fire}
+            className='w-[300px] sm:w-[500px] h-[400px] p-8 bg-white text-center flex flex-col justify-between'>
 
             <div>
                 <div className='text-2xl font-bold mb-3 sm:text-4xl'>Заявка отпрвлена</div>
@@ -37,7 +42,7 @@ const SuccessModal = ({setIsSuccess}) => {
                 Ок
             </motion.button>
 
-            <ConfettiFire />
+           {render}
         </div>
     )
 }

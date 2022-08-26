@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useRef } from "react";
 import ReactCanvasConfetti from "react-canvas-confetti";
+import { render } from "react-dom";
 
 const canvasStyles = {
   position: "fixed",
@@ -10,7 +11,7 @@ const canvasStyles = {
   left: 0
 };
 
-export default function ConfettiFire() {
+export default function useConfettiFire() {
   const refAnimationInstance = useRef(null);
 
   const getInstance = useCallback((instance) => {
@@ -57,9 +58,12 @@ export default function ConfettiFire() {
 
   useEffect(() => fire(), []);
 
-  return (
-    <>
-      <ReactCanvasConfetti refConfetti={getInstance} style={canvasStyles} />
-    </>
-  );
+  return {
+    fire,
+    render:(
+      <>
+        <ReactCanvasConfetti refConfetti={getInstance} style={canvasStyles} />
+      </>
+    )
+  }
 }
