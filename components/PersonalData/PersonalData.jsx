@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import React from 'react'
-import { ButtonBase } from '../Buttons/Buttons'
 import { ContainerLayout } from '../ContainerLayout/ContainerLayout'
 
 const PersonalData = () => {
@@ -71,7 +70,7 @@ const PersonalData = () => {
         {/* link */}
         <div className='mt-10 w-full flex justify-center'>
         <Link href={'/'}>
-          <a className='w-full sm:w-[500px] flex items-center justify-center mr-10 px-8 py-3 border border-transparent 
+          <a className='w-full sm:w-[500px] flex items-center justify-center px-8 py-3 border border-transparent 
                         text-base font-medium rounded-md text-white bg-baseColor hover:bg-indigo-700 md:py-4 md:text-lg md:px-10'>
                           Обратно на сайт
         </a>
