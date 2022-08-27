@@ -64,7 +64,7 @@ export default function Home({newsList}) {
   })
 
   const [isOpen, setIsOpen] = useState(false) // ModalFrom component
-  const [isSuccess, setIsSuccess] = useState(true) // ModalSuccess component
+  const [isSuccess, setIsSuccess] = useState(false) // ModalSuccess component
 
   return (
     <div>
