@@ -10,7 +10,7 @@ import PhoneForm from '../PhoneForm/PhoneForm'
 import { ButtonBase } from '../Buttons/Buttons'
 import ErrorAlert from '../ErrorAlert/ErrorAlert'
 
-const TariffSection = ({categories, setIsSuccess}) => {
+const TariffSection = ({categories, setIsSuccess, setUserNumber}) => {
 
   const [tariffItem, setTariffItem] = useState(null);
   const [isError, setIsError] = useState(false)
@@ -188,7 +188,7 @@ const TariffSection = ({categories, setIsSuccess}) => {
                     {
                       !isError ? 
                       <div className="bg-slate-50 px-6 py-7 w-full">
-                        <PhoneForm setIsSuccess={setIsSuccess} setIsError={setIsError} setSelectedLayout={setTariffItem}/>
+                        <PhoneForm setIsSuccess={setIsSuccess} setIsError={setIsError} setSelectedLayout={setTariffItem} setUserNumber={setUserNumber} />
                       </div>
 
                       :

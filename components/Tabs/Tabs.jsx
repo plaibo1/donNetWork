@@ -9,7 +9,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-function Tabs({categories, setIsSuccess}) {
+function Tabs({categories, setIsSuccess, setUserNumber}) {
 
   const [selectedItem, setSelectedItem] = useState(null)
 
@@ -182,6 +182,7 @@ function Tabs({categories, setIsSuccess}) {
                       setIsOpen={null} 
                       setIsSuccess={setIsSuccess}
                       setSelectedLayout={setSelectedItem}
+                      setUserNumber={setUserNumber}
                     />
 
                   </>

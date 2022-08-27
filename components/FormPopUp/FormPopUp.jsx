@@ -4,7 +4,7 @@ import style from './formPopUp.module.sass'
 import Image from 'next/image'
 import PhoneForm from '../PhoneForm/PhoneForm';
 
-const FormPopUp = ({setIsOpen, setIsSuccess}) => {
+const FormPopUp = ({setIsOpen, setIsSuccess, setUserNumber}) => {
 
     const [showNumberForm, setShowNumberForm] = useState(true);
     const [isError, setIsError] = useState(false)
@@ -40,7 +40,9 @@ const FormPopUp = ({setIsOpen, setIsSuccess}) => {
                                 setIsSuccess={setIsSuccess}
                                 setIsOpen={setIsOpen}
                                 setIsError={setIsError} 
-                                setShowNumberForm={setShowNumberForm}/>
+                                setShowNumberForm={setShowNumberForm}
+                                setUserNumber={setUserNumber}
+                            />
                         </>
                             :
                         <>

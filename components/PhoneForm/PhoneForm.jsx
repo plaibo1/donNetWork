@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { FaTimes } from "react-icons/fa";
 
-const PhoneForm = ({setIsError, setShowNumberForm, setIsOpen, setIsSuccess, setSelectedLayout}) => {
+const PhoneForm = ({setIsError, setShowNumberForm, setIsOpen, setIsSuccess, setSelectedLayout, setUserNumber}) => {
 
   const [loaded, setLoaded] = useState(false)
 
@@ -43,13 +43,13 @@ const PhoneForm = ({setIsError, setShowNumberForm, setIsOpen, setIsSuccess, setS
           if (setSelectedLayout) setSelectedLayout(null)
           setLoaded(false)
           setIsSuccess(true)
+          setUserNumber(res.phone)
           reset()
           console.log(res)
         })
     }
     catch (err) {
       if (err) {
-        console.log(err)
         setIsError(true)
         if (setShowNumberForm) setShowNumberForm(false)
         setLoaded(false)

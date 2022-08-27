@@ -10,7 +10,7 @@ import TelephonizationIndexPage from '../components/TelephonizationIndexPage/Tel
 import AnyQuestion from '../components/AnyQuestion/AnyQuestion'
 import Faq from '../components/Faq/Faq'
 import SuccessModal from '../components/SuccessModal/SuccessModal'
-import Footer from '../components/Footer/Footer';
+
 
 
 
@@ -65,6 +65,7 @@ export default function Home({newsList}) {
 
   const [isOpen, setIsOpen] = useState(false) // ModalFrom component
   const [isSuccess, setIsSuccess] = useState(false) // ModalSuccess component
+  const [userNumber, setUserNumber] = useState(false) // user number from phoneForm
 
   return (
     <div>
@@ -74,25 +75,25 @@ export default function Home({newsList}) {
       </Head>
 
       <Modal modalStatus={isOpen} setModalStatus={setIsOpen}>
-        <FormPopUp setIsOpen={setIsOpen} setIsSuccess={setIsSuccess}/>
+        <FormPopUp setIsOpen={setIsOpen} setIsSuccess={setIsSuccess} setUserNumber={setUserNumber}/>
       </Modal>
 
       <Modal modalStatus={isSuccess} setModalStatus={setIsSuccess}>
         {
-          isSuccess && <SuccessModal setIsSuccess={setIsSuccess}/>
+          isSuccess && <SuccessModal setIsSuccess={setIsSuccess} userNumber={userNumber}/>
         }
       </Modal>
 
 
       {/* page start */}
 
-      <Hero setIsOpen={setIsOpen} categories={categories} setIsSuccess={setIsSuccess} />
+      <Hero setIsOpen={setIsOpen} categories={categories} setIsSuccess={setIsSuccess} setUserNumber={setUserNumber}/>
 
-      <TariffSection categories={categories} setIsSuccess={setIsSuccess}/>
+      <TariffSection categories={categories} setIsSuccess={setIsSuccess} setUserNumber={setUserNumber}/>
 
       <SwiperNews list={newsList} />
 
-      <TelephonizationIndexPage setIsOpen={setIsOpen} setIsSuccess={setIsSuccess} />
+      <TelephonizationIndexPage setIsOpen={setIsOpen} setIsSuccess={setIsSuccess} setUserNumber={setUserNumber} />
 
       <AnyQuestion setIsOpen={setIsOpen} />
 

@@ -8,7 +8,7 @@ import PhoneForm from '../PhoneForm/PhoneForm'
 import { FaTimes } from 'react-icons/fa'
 import ErrorAlert from '../ErrorAlert/ErrorAlert'
 
-const TelephonizationIndexPage = ({setIsSuccess}) => {
+const TelephonizationIndexPage = ({setIsSuccess, setUserNumber}) => {
 
   const [selectedId, setSelectedId] = useState(null)
   const [isError, setIsError] = useState(false)
@@ -74,7 +74,7 @@ const TelephonizationIndexPage = ({setIsSuccess}) => {
               <div>
               {
                 !isError ?
-                <PhoneForm setIsSuccess={setIsSuccess} setSelectedLayout={setSelectedId} setIsError={setIsError}/>
+                <PhoneForm setIsSuccess={setIsSuccess} setSelectedLayout={setSelectedId} setIsError={setIsError} setUserNumber={setUserNumber}/>
                 :
                 <ErrorAlert setIsError={setIsError} />
               }
