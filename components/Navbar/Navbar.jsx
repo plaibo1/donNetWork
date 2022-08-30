@@ -154,31 +154,17 @@ const NavContent = () => {
       <DropdownItem solutions={solutions} />
 
       <a
-        href="#"
+        href="/404"
         className="text-gray-800 hover:bg-slate-100 hover:text-baseColor px-3 py-2 rounded-md text-sm font-medium"
       >
         Для бизнеса
       </a>
 
       <a
-        href="#"
+        href="/404"
         className="text-gray-800 hover:bg-slate-100 hover:text-baseColor px-3 py-2 rounded-md text-sm font-medium"
       >
         Projects
-      </a>
-
-      <a
-        href="#"
-        className="text-gray-800 hover:bg-slate-100 hover:text-baseColor px-3 py-2 rounded-md text-sm font-medium"
-      >
-        Calendar
-      </a>
-
-      <a
-        href="#"
-        className="text-gray-800 hover:bg-slate-100 hover:text-baseColor px-3 py-2 rounded-md text-sm font-medium"
-      >
-        Reports
       </a>
 
     </div>
