@@ -153,13 +153,14 @@ const NavContent = () => {
 
       <DropdownItem solutions={solutions} />
 
-      <a
-        href="/404"
-        className="text-gray-800 hover:bg-slate-100 hover:text-baseColor px-3 py-2 rounded-md text-sm font-medium"
-      >
-        Для бизнеса
-      </a>
-
+      <Link href="/404"> 
+        <a
+          className="hover:bg-slate-100 text-gray-800 hover:text-baseColor px-3 py-2 rounded-md text-sm font-medium"
+        >
+          О нас
+        </a>
+      </Link>
+      
     </div>
   )
 }
