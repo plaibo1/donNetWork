@@ -1,7 +1,12 @@
+import { ContainerLayout, PageContainer } from "../components/ContainerLayout/ContainerLayout"
 
 const About = () => {
   return (
-    <div>About PAGE</div>
+    <PageContainer>
+      <ContainerLayout>
+        <div>About PAGE</div>
+      </ContainerLayout>
+    </PageContainer>
   )
 }
 

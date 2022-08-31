@@ -9,6 +9,15 @@ export function ContainerLayout({children})  {
     </div>
   )
 }
+
+export function PageContainer({children}) {
+  return (
+    <div className='mt-[80px] sm:mt-14'>
+      {children}
+    </div>
+  )
+}
+
 export const PopUpWrapperForMotion = forwardRef((props, ref) => {
   return (
     <div className={style.popUpWrapper} ref={ref}>

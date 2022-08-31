@@ -1,8 +1,11 @@
+import { PageContainer } from "../components/ContainerLayout/ContainerLayout"
 import PersonalData from "../components/PersonalData/PersonalData"
 
 const PrivacyPage = () => {
   return (
-    <PersonalData /> 
+    <PageContainer>
+      <PersonalData /> 
+    </PageContainer>
   )
 }
 

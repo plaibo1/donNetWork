@@ -1,15 +1,17 @@
 import Link from 'next/link'
 import React from 'react'
 import { ContainerLayout } from '../ContainerLayout/ContainerLayout'
+import { HeadingLeft } from '../Headings/Headings'
 
 const PersonalData = () => {
   return (
     <ContainerLayout>
-      <div className='mt-5 sm:mt-8 md:mt-14'>
+      <div>
         
-        <div className='text-2xl md:text-4xl font-black mb-5'>
-          Условия обработки персональных данных
-        </div>
+        <HeadingLeft 
+          title={'Условия обработки персональных данных'}
+          subTitle={null}
+        />
 
         {/* text */}
         <div>
