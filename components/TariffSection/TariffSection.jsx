@@ -92,22 +92,14 @@ const TariffSection = ({categories, setIsSuccess, setUserNumber}) => {
             })
           }
 
-          <div className='bg-white sm:col-span-2 rounded-2xl shadow-md px-10 flex-col'>
+          <div className='bg-white sm:col-span-2 rounded-2xl shadow-md flex justify-center items-center'>
 
-            <div> 
+            <div className='w-[80%]'> 
               <span className='flex font-bold text-xl py-6 md:py-0 sm:text-2xl md:text-4xl mb-2 md:mb-10'>Пакет тв каналов с каждым тарифом от партнера! </span>
               <div className='w-full sm:w-[300px]'>
                 <ButtonBase btnText={'Подробнее от ТВ'} click={() => alert('123')}/>
               </div>
             </div>
-
-            {/* <div className='h-72 w-72 relative -mb-4 mt-5 sm:mb-0 sm:mt-0'>
-              <Image
-                src={'/pillsB.png'}
-                layout='fill'
-                objectFit='contain'
-              />
-            </div> */}
 
           </div>
 
@@ -188,7 +180,13 @@ const TariffSection = ({categories, setIsSuccess, setUserNumber}) => {
                     {
                       !isError ? 
                       <div className="bg-slate-50 px-6 py-7 w-full">
-                        <PhoneForm setIsSuccess={setIsSuccess} setIsError={setIsError} setSelectedLayout={setTariffItem} setUserNumber={setUserNumber} />
+                        <PhoneForm 
+                          setIsSuccess={setIsSuccess} 
+                          setIsError={setIsError} 
+                          setSelectedLayout={setTariffItem} 
+                          setUserNumber={setUserNumber} 
+                          userFrom={`Секция тарифов, выбран: <span style='color: #2b3cff'>${tariffItem.tariffName}</span>`}
+                        />
                       </div>
 
                       :
@@ -199,8 +197,7 @@ const TariffSection = ({categories, setIsSuccess, setUserNumber}) => {
                       
                     }
 
-                    
-
+                  
                     </PopUpWrapper>
                   </motion.div>
                 

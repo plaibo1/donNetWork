@@ -42,6 +42,8 @@ const FormPopUp = ({setIsOpen, setIsSuccess, setUserNumber}) => {
                                 setIsError={setIsError} 
                                 setShowNumberForm={setShowNumberForm}
                                 setUserNumber={setUserNumber}
+
+                                userFrom={'Главная форма'}
                             />
                         </>
                             :

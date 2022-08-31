@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { FaTimes } from "react-icons/fa";
 
-const PhoneForm = ({setIsError, setShowNumberForm, setIsOpen, setIsSuccess, setSelectedLayout, setUserNumber}) => {
+const PhoneForm = ({setIsError, setShowNumberForm, setIsOpen, setIsSuccess, setSelectedLayout, setUserNumber, userFrom}) => {
 
   const [loaded, setLoaded] = useState(false)
 
@@ -34,8 +34,7 @@ const PhoneForm = ({setIsError, setShowNumberForm, setIsOpen, setIsSuccess, setS
     try {
       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/mailer`, {
         method: 'post',
-        body: JSON.stringify(data),
-
+        body: JSON.stringify({...data, userFrom}),
       })
         .then(res => res.json())
         .then(res => {

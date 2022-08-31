@@ -74,7 +74,13 @@ const TelephonizationIndexPage = ({setIsSuccess, setUserNumber}) => {
               <div>
               {
                 !isError ?
-                <PhoneForm setIsSuccess={setIsSuccess} setSelectedLayout={setSelectedId} setIsError={setIsError} setUserNumber={setUserNumber}/>
+                <PhoneForm 
+                  setIsSuccess={setIsSuccess} 
+                  setSelectedLayout={setSelectedId} 
+                  setIsError={setIsError} 
+                  setUserNumber={setUserNumber}
+                  userFrom={'Телефонизация'}
+                />
                 :
                 <ErrorAlert setIsError={setIsError} />
               }

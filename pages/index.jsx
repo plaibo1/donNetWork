@@ -80,7 +80,7 @@ export default function Home({newsList}) {
 
       <Modal modalStatus={isSuccess} setModalStatus={setIsSuccess}>
         {
-          isSuccess && <SuccessModal setIsSuccess={setIsSuccess} userNumber={userNumber}/>
+          isSuccess && <SuccessModal setIsSuccess={setIsSuccess} userNumber={userNumber} />
         }
       </Modal>
 

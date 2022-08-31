@@ -17,20 +17,22 @@ const transporter = nodemailer.createTransport({
 
 export default async (req, res) => {
   
-  const {phone} = JSON.parse(req.body);
+  const {phone, userFrom} = JSON.parse(req.body);
 
-  const msg = null
+  if (!phone) res.status(400).json({status: 'no phone'})
+  if (!userFrom) res.status(400).json({status: 'no userFrom'})
+
+  console.log(userFrom)
 
   try {
-
     const emailRes = await transporter.sendMail({
       to: 'lyskov.2000@mail.ru',
-      subject: `🖖 Оставил заявку`,
+      subject: `🖖 Новая заявка`,
       html: `
-              <p style='font-size: 35px; font-wight: bold; margin-bottom: 10px'>You have a new contact form submission</p>
-              <p><strong>Name: </strong> ${phone} 👾</p>
-              <p><strong>Phone: </strong> ${phone} 📞</p>
-              <p><strong>Message: </strong> ${msg || '---'} 💬</p>
+              <p style='font-size: 25px; margin-bottom: 10px'>
+                Заявка из: <br/> <strong>${userFrom}</strong>
+              </p>
+              <p><strong>📞Телефон: </strong> ${phone}</p>
             `,
     });
 

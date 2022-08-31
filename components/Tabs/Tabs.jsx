@@ -135,10 +135,7 @@ function Tabs({categories, setIsSuccess, setUserNumber}) {
                 <motion.h3 className='text-base sm:text-2xl font-semibold mb-3 sm:mb-5'>
                   Вы выбрали тариф: {' '}
                   <span className='text-baseColor font-bold'>
-
-                    {/* -----refactor it !!! ------ */}
-                    {Object.keys(categories)[selectedItem.categoryId - 1]}
-
+                    {selectedItem.tariffName}
                   </span>
                 </motion.h3>
 
@@ -183,6 +180,8 @@ function Tabs({categories, setIsSuccess, setUserNumber}) {
                       setIsSuccess={setIsSuccess}
                       setSelectedLayout={setSelectedItem}
                       setUserNumber={setUserNumber}
+
+                      userFrom={`Тарифы в "шапке" сайта, выбран: <span style='color: #2b3cff'>${selectedItem.tariffName}</span>`}
                     />
 
                   </>
