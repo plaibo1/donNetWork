@@ -177,7 +177,7 @@ const DropdownItem = ({solutions}) => {
                 ${open ? 'bg-baseColor text-white' : 'text-opacity-100 text-gray-800'}
                  hover:bg-slate-100 hover:text-baseColor px-3 py-2 rounded-md text-sm font-medium flex`}
             >
-              <span>Solutions</span>
+              <span>Для бизнеса</span>
 
               <HiChevronDown
                 className={`${open ? '' : 'text-opacity-100'} 

@@ -94,7 +94,7 @@ const Footer = () => {
                 </div>
 
                 <div className='flex flex-col px-0 text-center sm:text-left sm:px-5 mt-5 pt-5 border-t sm:flex-row sm:justify-between text-sm'>
-                    <span className='inline-block mb-3 sm:mb-0'>© 2008–{new Date().getFullYear()} ООО «Донтехсвязь»</span>
+                    <span className='inline-block mb-3 sm:mb-0'>© 1991–{new Date().getFullYear()} ООО «Донтехсвязь»</span>
                     <Link href={'/privacy'}>
                         <a className='hover:text-baseColor'>Политика конфиденциальности</a>
                     </Link>

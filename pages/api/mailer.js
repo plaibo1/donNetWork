@@ -30,7 +30,7 @@ export default async (req, res) => {
       subject: `🖖 Новая заявка`,
       html: `
               <p style='font-size: 25px; margin-bottom: 10px'>
-                Заявка из: <br/> <strong>${userFrom}</strong>
+                Заявка из: <br/> <strong> ${userFrom}</strong>
               </p>
               <p><strong>📞Телефон: </strong> ${phone}</p>
             `,
