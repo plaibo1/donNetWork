@@ -1,59 +1,53 @@
-import React, { useEffect, useState } from 'react'
-import { ContainerLayout } from '../ContainerLayout/ContainerLayout'
-import { HeadingLeft } from '../Headings/Headings'
+import React, { useEffect, useState } from "react";
+import { ContainerLayout } from "../ContainerLayout/ContainerLayout";
+import { HeadingLeft } from "../Headings/Headings";
 
-import { tariffs } from '../../mockdata/tariffs'
-import { TariffCard } from './TariffCard'
-import { client } from '../../utils/client'
-import { TARIFFS_ENTRY } from '../../utils/variables'
-import { TariffOffice } from './TariffOffice/TariffOffice'
+import { tariffs } from "../../mockdata/tariffs";
+import { TariffCard } from "./TariffCard";
+import { client } from "../../utils/client";
+import { TARIFFS_ENTRY } from "../../utils/variables";
+import { TariffOffice } from "./TariffOffice/TariffOffice";
 
 const TariffSection = () => {
   const [tariffData, setTariffData] = useState([]);
 
   useEffect(() => {
-
     const fetchTariffData = async () => {
       try {
         const data = await client.getEntries({
           content_type: TARIFFS_ENTRY,
-        })
+        });
 
         const sortAndCleanData = data.items
-          .map(({fields}) => fields)
+          .map(({ fields }) => fields)
           .sort((a, b) => a.order - b.order);
-    
+
         setTariffData(sortAndCleanData);
-      }
-  
-      catch (error) {
+      } catch (error) {
         console.log("failed fetchTariffData: ", error);
       }
-    }
+    };
     fetchTariffData();
-
-  }, [])
+  }, []);
 
   return (
     <section>
       <ContainerLayout>
+        <HeadingLeft
+          title={"Куда проводим?"}
+          subTitle={"Выберите куда хотите подключить интеренет"}
+        />
 
-        <HeadingLeft title={'Куда проводим?'} subTitle={'Выберите куда хотите подключить интеренет'} />
-
-        <div className='flex flex-col sm:grid sm:gap-4 md:grid-cols-2 lg:grid-cols-3'>
+        <div className="flex flex-col sm:grid sm:gap-4 md:grid-cols-2 lg:grid-cols-3">
           {tariffData?.map((tariff, index) => (
-            <TariffCard 
-              key={index} 
-              tariff={tariff}
-            />
+            <TariffCard key={index} tariff={tariff} />
           ))}
 
           <TariffOffice />
         </div>
-
       </ContainerLayout>
     </section>
-  )
-}
+  );
+};
 
-export default TariffSection
+export default TariffSection;

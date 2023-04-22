@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react";
 
-export const ButtonBase = ({ btnText, click}) => {
+export const ButtonBase = ({ btnText, click }) => {
   return (
     <button
       onClick={click}
@@ -9,8 +9,8 @@ export const ButtonBase = ({ btnText, click}) => {
     >
       {btnText}
     </button>
-  )
-}
+  );
+};
 
 export const ButtonBaseLight = ({ btnText, click }) => {
   return (
@@ -21,6 +21,5 @@ export const ButtonBaseLight = ({ btnText, click }) => {
     >
       {btnText}
     </button>
-  )
-}
-
+  );
+};
