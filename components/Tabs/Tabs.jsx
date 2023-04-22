@@ -10,12 +10,9 @@ function classNames(...classes) {
 }
 
 function Tabs({categories, setIsSuccess, setUserNumber}) {
-
   const [selectedItem, setSelectedItem] = useState(null)
-
   const [isError, setIsError] = useState(false)
 
-  
   return (
     <>
 

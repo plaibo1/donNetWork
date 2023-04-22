@@ -8,7 +8,54 @@ import { BsTelephone } from 'react-icons/bs'
 
 
 
-const Hero = ({ setIsOpen, categories, setIsSuccess, setUserNumber }) => {
+const Hero = ({ setIsOpen, setIsSuccess, setUserNumber }) => {
+
+  let [categories] = useState({
+    "Старт": [
+      {
+        tariffName: 'Старт',
+        title: 'Быстрее скачивай файлы, играй в онлайн-игры и смотри фильмы без зависаний на нескольких устройствах',
+        channelsCount: '136',
+        speed: '50 Мбит/сек',
+        price: '650',
+        image: '/start3.png',
+        categoryId: '1',
+      },
+    ],
+    "Комфорт": [
+      {
+        tariffName: 'Комфорт',
+        title: 'Быстрее скачивай файлы, играй в онлайн-игры и смотри фильмы без зависаний на нескольких устройствах',
+        channelsCount: '202',
+        speed: '100 Мбит/сек',
+        price: '800',
+        image: '/comfort.png',
+        categoryId: '2',
+      },
+    ],
+    "Премиум": [
+      {
+        tariffName: 'Премиум',
+        title: 'Сверхскоростной интернет для любых задач. Работай, играй, моментально скачивай файлы',
+        channelsCount: '297',
+        speed: '100 Мбит/сек',
+        price: '900',
+        image: '/premium.png',
+        categoryId: '3',
+      },
+    ],
+    "Максимум": [
+      {
+        tariffName: 'Максимум',
+        title: 'МЕГА Сверхскоростной интернет для любых задач. Работай, играй, моментально скачивай файлы',
+        channelsCount: '297',
+        speed: '500 Мбит/сек',
+        price: '1100',
+        image: '/maximum.png',
+        categoryId: '4',
+      },
+    ],
+  })
 
   const { scrollY } = useScroll()
 

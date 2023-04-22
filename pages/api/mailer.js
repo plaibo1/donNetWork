@@ -10,7 +10,7 @@ const transporter = nodemailer.createTransport({
     },
   },
   {
-    from: '«ООО» Донтехсвязь🌐 <lyskov.2000@mail.ru>'
+    from: '«ООО» Донтехсвязь🌐 <playboi.2000@mail.ru>'
   }
 );
 
@@ -22,11 +22,9 @@ export default async (req, res) => {
   if (!phone) res.status(400).json({status: 'no phone'})
   if (!userFrom) res.status(400).json({status: 'no userFrom'})
 
-  console.log(userFrom)
-
   try {
-    const emailRes = await transporter.sendMail({
-      to: 'lyskov.2000@mail.ru',
+    await transporter.sendMail({
+      to: 'playboi.2000@mail.ru',
       subject: `🖖 Новая заявка`,
       html: `
               <p style='font-size: 25px; margin-bottom: 10px'>
@@ -40,7 +38,7 @@ export default async (req, res) => {
   }
   catch(err) {
     console.log(err)
-    return res.status(400).json({err})
+    return res.status(400).json({...err, JAMAL: "123"})
   }
   
 }

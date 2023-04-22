@@ -32,27 +32,28 @@ const PhoneForm = ({setIsError, setShowNumberForm, setIsOpen, setIsSuccess, setS
     setLoaded(true);
 
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/mailer`, {
+      await fetch("/api/mailer", {
         method: 'post',
         body: JSON.stringify({...data, userFrom}),
       })
         .then(res => res.json())
         .then(res => {
+          if (res.responseCode === 535) {
+            throw new Error("Something went wrong")
+          }
           if (setIsOpen) setIsOpen(false)
           if (setSelectedLayout) setSelectedLayout(null)
           setLoaded(false)
           setIsSuccess(true)
           setUserNumber(res.phone)
           reset()
-          console.log(res)
+          console.log("🚀 ~ onSubmit ~ res:", res)
         })
     }
     catch (err) {
-      if (err) {
-        setIsError(true)
-        if (setShowNumberForm) setShowNumberForm(false)
-        setLoaded(false)
-      }
+      setIsError(true)
+      if (setShowNumberForm) setShowNumberForm(false)
+      setLoaded(false)
     }
   }
 

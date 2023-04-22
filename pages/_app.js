@@ -1,9 +1,15 @@
 import NextNProgress from 'nextjs-progressbar'
+import { useReducer, useState } from 'react';
 import Footer from '../components/Footer/Footer'
 import Navbar from '../components/Navbar/Navbar'
+import AppContext from '../context/AppContext';
+import { initialState, reducer } from '../store/reducers';
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
+
+  const [state, dispatch] = useReducer(reducer, initialState);
+
   return (
     <>
       <NextNProgress
@@ -12,11 +18,12 @@ function MyApp({ Component, pageProps }) {
         stopDelayMs={200}
         height={3}
         showOnShallow={true}
-      />
-
-      <Navbar />
-        <Component {...pageProps} />
-      <Footer />
+      /> 
+      <AppContext.Provider value={[state, dispatch]}>
+        <Navbar />
+          <Component {...pageProps} />
+        <Footer />
+      </AppContext.Provider>
     </>
   )
 }
