@@ -1,8 +1,13 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Tab } from "@headlessui/react";
 import { motion } from "framer-motion";
+import PhoneForm from "../../PhoneForm/PhoneForm";
+import { getUserFromTariffHTMLString } from "../../../utils/variables";
+import ErrorAlert from "../../ErrorAlert/ErrorAlert";
 
-export const PopUpContent = ({ tariffs }) => {
+export const PopUpContent = ({ tariffs, ...props }) => {
+  const [isError, setIsError] = useState(false);
+
   useEffect(() => {
     document.body.style.overflow = "hidden";
 
@@ -47,23 +52,38 @@ export const PopUpContent = ({ tariffs }) => {
         </Tab.List>
 
         <Tab.Panels className="mt-2">
-          {tariffs.map((tariff, idx) => (
-            <Tab.Panel
-              key={idx}
-              className={classNames(
-                "rounded-xl bg-white p-3",
-                "ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2"
-              )}
-            >
-              <div className="bg-slate-400 mb-2">price: {tariff.price}</div>
-              <div className="bg-slate-400 mb-2">
-                internetSpeed: {tariff.internetSpeed}
-              </div>
-              <div className="bg-slate-400 mb-2">
-                channelsCount: {tariff.channelsCount}
-              </div>
-            </Tab.Panel>
-          ))}
+          {tariffs.map((tariff, idx) => {
+            return (
+              <Tab.Panel
+                key={idx}
+                className={classNames(
+                  "rounded-xl bg-white p-3",
+                  "ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2"
+                )}
+              >
+                <div className="bg-slate-400 mb-2">price: {tariff.price}</div>
+                <div className="bg-slate-400 mb-2">
+                  internetSpeed: {tariff.internetSpeed}
+                </div>
+                <div className="bg-slate-400 mb-2">
+                  channelsCount: {tariff.channelsCount}
+                </div>
+
+                {!isError ? (
+                  <PhoneForm
+                    setIsError={setIsError}
+                    {...props}
+                    userFrom={getUserFromTariffHTMLString(
+                      tariffs[0].relationTo.fields.tariffName,
+                      tariff.title
+                    )}
+                  />
+                ) : (
+                  <ErrorAlert setIsError={setIsError} />
+                )}
+              </Tab.Panel>
+            );
+          })}
         </Tab.Panels>
       </Tab.Group>
     </motion.div>

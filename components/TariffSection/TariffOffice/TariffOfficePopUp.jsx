@@ -4,9 +4,13 @@ import { useEffect, useState } from "react";
 import PhoneForm from "../../PhoneForm/PhoneForm";
 import ErrorAlert from "../../ErrorAlert/ErrorAlert";
 
-export const TariffOfficePopUp = ({ isOpen, setIsOpen }) => {
+export const TariffOfficePopUp = ({
+  isOpen,
+  setIsOpen,
+  setUserNumber,
+  setIsSuccess,
+}) => {
   const [isError, setIsError] = useState(false);
-  const sas = "";
 
   useEffect(() => {
     if (isOpen) {
@@ -52,7 +56,13 @@ export const TariffOfficePopUp = ({ isOpen, setIsOpen }) => {
             </div>
 
             {!isError ? (
-              <PhoneForm setIsError={setIsError} userFrom="Офисная форма" />
+              <PhoneForm
+                setIsError={setIsError}
+                setUserNumber={setUserNumber}
+                setIsSuccess={setIsSuccess}
+                setIsOpen={setIsOpen}
+                userFrom="Офисная форма"
+              />
             ) : (
               <ErrorAlert setIsError={setIsError} />
             )}

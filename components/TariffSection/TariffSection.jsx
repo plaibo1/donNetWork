@@ -2,13 +2,12 @@ import React, { useEffect, useState } from "react";
 import { ContainerLayout } from "../ContainerLayout/ContainerLayout";
 import { HeadingLeft } from "../Headings/Headings";
 
-import { tariffs } from "../../mockdata/tariffs";
 import { TariffCard } from "./TariffCard";
 import { client } from "../../utils/client";
 import { TARIFFS_ENTRY } from "../../utils/variables";
 import { TariffOffice } from "./TariffOffice/TariffOffice";
 
-const TariffSection = () => {
+const TariffSection = ({ id: sectionId }) => {
   const [tariffData, setTariffData] = useState([]);
 
   useEffect(() => {
@@ -31,11 +30,11 @@ const TariffSection = () => {
   }, []);
 
   return (
-    <section>
+    <section id={sectionId}>
       <ContainerLayout>
         <HeadingLeft
           title={"Куда проводим?"}
-          subTitle={"Выберите куда хотите подключить интеренет"}
+          subTitle={"Выберите куда хотите подключить интернет"}
         />
 
         <div className="flex flex-col sm:grid sm:gap-4 md:grid-cols-2 lg:grid-cols-3">

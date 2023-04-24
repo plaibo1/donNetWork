@@ -1,9 +1,13 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import { TariffOfficePopUp } from "./TariffOfficePopUp";
+import Modal from "../../Modal/Modal";
+import SuccessModal from "../../SuccessModal/SuccessModal";
 
 export const TariffOffice = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false); // ModalSuccess component
+  const [userNumber, setUserNumber] = useState(false); // user number from phoneForm
 
   return (
     <>
@@ -39,12 +43,23 @@ export const TariffOffice = () => {
             className="w-full flex items-center justify-center px-8 py-3 border border-transparent 
                   text-base font-medium rounded-md text-baseColor bg-indigo-100 hover:bg-indigo-200 md:text-lg md:px-10"
           >
-            Выбрать &quot;{"tariff.tariffName"}&quot;
+            Выбрать &quot;Офис&quot;
           </button>
         </div>
       </div>
 
-      <TariffOfficePopUp setIsOpen={setIsOpen} isOpen={isOpen} />
+      <TariffOfficePopUp
+        setIsOpen={setIsOpen}
+        isOpen={isOpen}
+        setIsSuccess={setIsSuccess}
+        setUserNumber={setUserNumber}
+      />
+
+      <Modal modalStatus={isSuccess} setModalStatus={setIsSuccess}>
+        {isSuccess && (
+          <SuccessModal setIsSuccess={setIsSuccess} userNumber={userNumber} />
+        )}
+      </Modal>
     </>
   );
 };

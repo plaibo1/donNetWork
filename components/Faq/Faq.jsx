@@ -4,8 +4,9 @@ import { ContainerLayout } from "../ContainerLayout/ContainerLayout";
 import { AnimatePresence, motion } from "framer-motion";
 import { HeadingLeft } from "../Headings/Headings";
 import { ButtonBase } from "../Buttons/Buttons";
+import GlobalModalButton from "../GlobalModalButton/GlobalModalButton";
 
-export default function Faq({ setIsOpen }) {
+export default function Faq({ id: sectionId }) {
   const questions = [
     {
       question: "Как позвонить в тех.поддержку?",
@@ -79,51 +80,52 @@ export default function Faq({ setIsOpen }) {
   ];
 
   return (
-    <ContainerLayout>
-      <HeadingLeft title={"Часто задаваемые вопросы"} subTitle={null} />
+    <section id={sectionId}>
+      <ContainerLayout>
+        <HeadingLeft title={"Часто задаваемые вопросы"} subTitle={null} />
 
-      <div className="mx-auto w-full rounded-3xl bg-slate-50 py-3 sm:py-7 px-4 sm:px-10">
-        {questions.map((item, index) => {
-          return (
-            <Disclosure as="div" className="py-7 border-b" key={index}>
-              {({ open }) => (
-                <>
-                  <Disclosure.Button
-                    className="flex items-center w-full justify-between rounded-lg
+        <div className="mx-auto w-full rounded-3xl bg-slate-50 py-3 sm:py-7 px-4 sm:px-10">
+          {questions.map((item, index) => {
+            return (
+              <Disclosure as="div" className="py-7 border-b" key={index}>
+                {({ open }) => (
+                  <>
+                    <Disclosure.Button
+                      className="flex items-center w-full justify-between rounded-lg
                       px-0 sm:px-4 text-left text-sm font-medium "
-                  >
-                    <span className="text-xl sm:text-2xl hover:text-baseColor">
-                      {item.question}
-                    </span>
-
-                    <HiOutlineChevronUp
-                      className={`${
-                        open ? "rotate-180 transform" : ""
-                      } min-h-[23px] min-w-[23px] ml-3 text-baseColor`}
-                    />
-                  </Disclosure.Button>
-
-                  <Disclosure.Panel className="px-3 sm:px-6 pt-5 text-lg sm:text-xl text-gray-900">
-                    <motion.div
-                      initial={{ height: 0 }}
-                      animate={{ height: "auto" }}
                     >
-                      {item.answer}
-                    </motion.div>
-                  </Disclosure.Panel>
-                </>
-              )}
-            </Disclosure>
-          );
-        })}
+                      <span className="text-xl sm:text-2xl hover:text-baseColor">
+                        {item.question}
+                      </span>
 
-        <div className="mt-10 w-full md:w-100 sm:mx-auto">
-          <ButtonBase
-            btnText={"Оставить заявку"}
-            click={() => setIsOpen(true)}
-          />
+                      <HiOutlineChevronUp
+                        className={`${
+                          open ? "rotate-180 transform" : ""
+                        } min-h-[23px] min-w-[23px] ml-3 text-baseColor`}
+                      />
+                    </Disclosure.Button>
+
+                    <Disclosure.Panel className="px-3 sm:px-6 pt-5 text-lg sm:text-xl text-gray-900">
+                      <motion.div
+                        initial={{ height: 0 }}
+                        animate={{ height: "auto" }}
+                      >
+                        {item.answer}
+                      </motion.div>
+                    </Disclosure.Panel>
+                  </>
+                )}
+              </Disclosure>
+            );
+          })}
+
+          <div className="mt-10 w-full md:w-100 sm:mx-auto">
+            <GlobalModalButton>
+              <ButtonBase btnText={"Оставить заявку"} />
+            </GlobalModalButton>
+          </div>
         </div>
-      </div>
-    </ContainerLayout>
+      </ContainerLayout>
+    </section>
   );
 }

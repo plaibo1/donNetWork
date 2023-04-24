@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { forwardRef } from "react";
 import style from "./layout.module.sass";
 
-export function ContainerLayout({ children }) {
+export function ContainerLayout({ children, id }) {
   return (
     <div className="container max-w-7xl mx-auto px-5 py-5 md:py-24">
       {children}

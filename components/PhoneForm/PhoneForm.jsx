@@ -25,14 +25,21 @@ const PhoneForm = ({
   const [privacyShow, setPrivacyShow] = useState(false);
 
   const {
-    register,
     control,
     formState: { errors },
     handleSubmit,
+    setError,
     reset,
   } = useForm({ mode: "onBlur" });
 
   const onSubmit = async (data) => {
+    const isFullLengthPhone = data.phone.indexOf("_");
+
+    if (isFullLengthPhone !== -1) {
+      setError("phone", { type: "minLength" });
+      return;
+    }
+
     setLoaded(true);
 
     try {
@@ -72,7 +79,7 @@ const PhoneForm = ({
             control={control}
             name="phone"
             defaultValue=""
-            rules={{ required: true, message: "test test test" }}
+            rules={{ required: true }}
             render={({ field: { onChange, ref, name, value } }) => (
               <NumberFormat
                 format="+7 (###) ### ## ##"
@@ -87,8 +94,11 @@ const PhoneForm = ({
           />
 
           <div className="text-red-500 h-8 text-base">
-            {errors?.phone && (
-              <p>{errors?.phone?.message || "Введите номера телефона"}</p>
+            {errors.phone?.type === "required" && (
+              <span>Введите номера телефона</span>
+            )}
+            {errors.phone?.type === "minLength" && (
+              <span>Введите корректный номера телефона</span>
             )}
           </div>
         </>
@@ -111,7 +121,7 @@ const PhoneForm = ({
         </motion.button>
       </div>
 
-      <p className="w-full mt-4 text-sm text-center text-gray-500">
+      <div className="w-full mt-4 text-sm text-center text-gray-500">
         Нажимая на кнопку «Жду звонка», вы предоставляете ООО «Донтехсваязь»
         согласие на обработку
         <span
@@ -133,12 +143,12 @@ const PhoneForm = ({
               </span>
               {privacyStartText}{" "}
               <Link href={"/privacy"}>
-                <a className="text-baseColor">подробнее...</a>
+                <a className="text-baseColor">подробнее</a>
               </Link>
             </div>
           )}
         </span>
-      </p>
+      </div>
     </form>
   );
 };

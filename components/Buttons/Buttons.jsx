@@ -1,9 +1,9 @@
 import React from "react";
 
-export const ButtonBase = ({ btnText, click }) => {
+export const ButtonBase = ({ btnText, onClick }) => {
   return (
     <button
-      onClick={click}
+      onClick={onClick}
       className="w-full flex items-center justify-center px-8 py-3 border border-transparent 
                         text-base font-medium rounded-md text-white bg-baseColor hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"
     >

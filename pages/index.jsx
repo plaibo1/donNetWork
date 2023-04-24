@@ -11,9 +11,15 @@ import AnyQuestion from "../components/AnyQuestion/AnyQuestion";
 import Faq from "../components/Faq/Faq";
 import SuccessModal from "../components/SuccessModal/SuccessModal";
 import { client } from "../utils/client";
-import { NEWS_ENTRY } from "../utils/variables";
+import {
+  ADVANTAGES_ENTRY,
+  NEWS_ENTRY,
+  heroContentId,
+} from "../utils/variables";
+import { Advantages } from "../components/Advantages/Advantages";
+import { HowConnect } from "../components/HowConnect/HowConnect";
 
-export default function Home({ newsList }) {
+export default function Home({ newsList, heroData, advantagesData }) {
   const [isOpen, setIsOpen] = useState(false); // ModalFrom component
   const [isSuccess, setIsSuccess] = useState(false); // ModalSuccess component
   const [userNumber, setUserNumber] = useState(false); // user number from phoneForm
@@ -39,7 +45,6 @@ export default function Home({ newsList }) {
           content="Интернет, ТВ и услуги телефонизации в Ростове-на-Дону для дома и бизнеса"
         />
       </Head>
-
       <Modal modalStatus={isOpen} setModalStatus={setIsOpen}>
         <FormPopUp
           setIsOpen={setIsOpen}
@@ -47,7 +52,6 @@ export default function Home({ newsList }) {
           setUserNumber={setUserNumber}
         />
       </Modal>
-
       <Modal modalStatus={isSuccess} setModalStatus={setIsSuccess}>
         {isSuccess && (
           <SuccessModal setIsSuccess={setIsSuccess} userNumber={userNumber} />
@@ -55,51 +59,68 @@ export default function Home({ newsList }) {
       </Modal>
 
       {/* page start */}
-
       <Hero
+        heroData={heroData}
         setIsOpen={setIsOpen}
         setIsSuccess={setIsSuccess}
         setUserNumber={setUserNumber}
       />
 
-      <TariffSection
-        setIsSuccess={setIsSuccess}
-        setUserNumber={setUserNumber}
-      />
+      <TariffSection id="whatConnection" />
 
-      <SwiperNews list={newsList} />
+      <SwiperNews id="news" list={newsList} />
 
       <TelephonizationIndexPage
         setIsOpen={setIsOpen}
         setIsSuccess={setIsSuccess}
         setUserNumber={setUserNumber}
+        id="telephonization"
       />
 
-      <AnyQuestion setIsOpen={setIsOpen} />
+      <Advantages advantagesData={advantagesData} id="advantages" />
 
-      <Faq setIsOpen={setIsOpen} />
+      <HowConnect />
+
+      <AnyQuestion />
+
+      <Faq id="faq" />
     </div>
   );
 }
 
 // get data from contentful
-export async function getStaticProps() {
+export async function getServerSideProps() {
   try {
-    const data = await client.getEntries({
+    const newsData = await client.getEntries({
       content_type: NEWS_ENTRY,
+      limit: 15,
+      order: "-sys.createdAt",
     });
 
-    // console.log("data------- ", data)
+    const advantagesData = await client.getEntries({
+      content_type: ADVANTAGES_ENTRY,
+    });
+
+    const heroData = await client.getEntry(heroContentId);
 
     return {
       props: {
-        newsList: data,
+        newsList: newsData,
+        heroData: heroData.fields,
+        advantagesData: advantagesData.items.map(({ fields }) => fields),
       },
     };
   } catch {
     return {
       props: {
         newsList: null,
+        heroData: {
+          headingBlack: "Домашний интернет",
+          accentText: "в Ростове-на-Дону",
+          description:
+            "Более 20000 абонентов в Советском, Железнодорожном и Ленинском районах Ростова-на-Дону.",
+        },
+        advantagesData: null,
       },
     };
   }

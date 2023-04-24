@@ -8,12 +8,16 @@ import PhoneForm from "../PhoneForm/PhoneForm";
 import { FaTimes } from "react-icons/fa";
 import ErrorAlert from "../ErrorAlert/ErrorAlert";
 
-const TelephonizationIndexPage = ({ setIsSuccess, setUserNumber }) => {
+const TelephonizationIndexPage = ({
+  setIsSuccess,
+  setUserNumber,
+  id: sectionId,
+}) => {
   const [selectedId, setSelectedId] = useState(null);
   const [isError, setIsError] = useState(false);
 
   return (
-    <>
+    <section id={sectionId}>
       <ContainerLayout>
         <motion.div
           className="p-6 sm:p-16 md:p-20 rounded-2xl bg-sweetCorn"
@@ -28,7 +32,7 @@ const TelephonizationIndexPage = ({ setIsSuccess, setUserNumber }) => {
             <div className="w-full sm:w-48 md:w-80">
               <ButtonBase
                 btnText={"Узнать подробности"}
-                click={() => setSelectedId("TelephonizationIndexPage")}
+                onClick={() => setSelectedId("TelephonizationIndexPage")}
               />
             </div>
 
@@ -39,7 +43,7 @@ const TelephonizationIndexPage = ({ setIsSuccess, setUserNumber }) => {
             <a
               href="tel:+7(863)202-00-00"
               className="font-bold sm:text-md md:text-xl 
-            lg:text-2xl flex items-center sm:flex-row "
+            lg:text-2xl flex items-center sm:flex-row"
             >
               <BsTelephone className="mr-2" />
               +7 (863) 202-00-00
@@ -92,7 +96,7 @@ const TelephonizationIndexPage = ({ setIsSuccess, setUserNumber }) => {
           </motion.div>
         </motion.div>
       )}
-    </>
+    </section>
   );
 };
 
