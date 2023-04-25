@@ -6,7 +6,12 @@ import { getUserFromTariffHTMLString } from "../../../utils/variables";
 import ErrorAlert from "../../ErrorAlert/ErrorAlert";
 
 export const PopUpContent = ({ tariffs, ...props }) => {
+  console.log(
+    "🚀 ~ file: PopUpContent.jsx:9 ~ PopUpContent ~ tariffs:",
+    tariffs
+  );
   const [isError, setIsError] = useState(false);
+  const [addTv, setAddTv] = useState(false);
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -61,12 +66,27 @@ export const PopUpContent = ({ tariffs, ...props }) => {
                   "ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2"
                 )}
               >
-                <div className="bg-slate-400 mb-2">price: {tariff.price}</div>
-                <div className="bg-slate-400 mb-2">
-                  internetSpeed: {tariff.internetSpeed}
-                </div>
-                <div className="bg-slate-400 mb-2">
-                  channelsCount: {tariff.channelsCount}
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-3">
+                  <div className="p-3 rounded-lg border border-slate-300">
+                    Цена: {addTv ? tariff.price + tariff.plusTv : tariff.price}
+                  </div>
+                  <div className="p-3 rounded-lg border border-slate-300">
+                    Скорость: {tariff.internetSpeed}
+                  </div>
+                  <div className="p-3 rounded-lg border border-slate-300">
+                    Каналов: {tariff.channelsCount}
+                  </div>
+
+                  <div
+                    onClick={() => setAddTv((s) => !s)}
+                    className={`p-3 rounded-lg border ${
+                      addTv
+                        ? "bg-baseColor opacity-100 text-white"
+                        : "bg-white opacity-50"
+                    } border-slate-300 cursor-pointer hover:border-baseColor hover:opacity-100`}
+                  >
+                    Добавить тв (+{tariff.plusTv}руб)
+                  </div>
                 </div>
 
                 {!isError ? (

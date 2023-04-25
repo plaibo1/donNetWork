@@ -40,9 +40,9 @@ export const TariffCard = ({ tariff }) => {
 
         {/* image */}
         <div className="h-[235px] relative -z-10">
-          <div className="h-72 w-72 rotate-x absolute -bottom-0 -right-8">
+          <div className="h-72 w-72 rotate-x absolute -bottom-6 -right-8">
             <Image
-              src={"/test.png"}
+              src={`https:${tariff.image.fields.file.url}`}
               layout="fill"
               objectFit="contain"
               alt="донтехсвязь tariff image"

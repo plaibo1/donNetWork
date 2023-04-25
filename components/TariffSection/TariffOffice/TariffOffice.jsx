@@ -22,7 +22,7 @@ export const TariffOffice = () => {
         <div className="h-[235px] relative -z-10">
           <div className="h-72 w-72 rotate-x absolute -right-8">
             <Image
-              src={"/test.png"}
+              src={"/tariffOffice.png"}
               layout="fill"
               objectFit="contain"
               alt="донтехсвязь tariff image"
