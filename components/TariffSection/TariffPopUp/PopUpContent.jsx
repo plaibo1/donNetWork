@@ -4,14 +4,11 @@ import { motion } from "framer-motion";
 import PhoneForm from "../../PhoneForm/PhoneForm";
 import { getUserFromTariffHTMLString } from "../../../utils/variables";
 import ErrorAlert from "../../ErrorAlert/ErrorAlert";
+import { BiRuble } from "react-icons/bi";
 
 export const PopUpContent = ({ tariffs, ...props }) => {
-  console.log(
-    "🚀 ~ file: PopUpContent.jsx:9 ~ PopUpContent ~ tariffs:",
-    tariffs
-  );
   const [isError, setIsError] = useState(false);
-  const [addTv, setAddTv] = useState(false);
+  const [addTv, setAddTv] = useState(true);
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -61,32 +58,86 @@ export const PopUpContent = ({ tariffs, ...props }) => {
             return (
               <Tab.Panel
                 key={idx}
-                className={classNames(
-                  "rounded-xl bg-white p-3",
-                  "ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2"
-                )}
+                className={classNames("rounded-xl bg-white p-3")}
               >
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-3">
-                  <div className="p-3 rounded-lg border border-slate-300">
-                    Цена: {addTv ? tariff.price + tariff.plusTv : tariff.price}
-                  </div>
-                  <div className="p-3 rounded-lg border border-slate-300">
-                    Скорость: {tariff.internetSpeed}
-                  </div>
-                  <div className="p-3 rounded-lg border border-slate-300">
-                    Каналов: {tariff.channelsCount}
+                {/* mini cards */}
+                <div className="flex flex-row-reverse justify-between items-center">
+                  {/* price */}
+                  <div className="text-3xl sm:text-5xl flex flex-col items-end font-bold">
+                    {addTv ? tariff.price + tariff.plusTv : tariff.price}{" "}
+                    <span className="text-sm font-normal">руб/мес</span>
                   </div>
 
-                  <div
-                    onClick={() => setAddTv((s) => !s)}
-                    className={`p-3 rounded-lg border ${
-                      addTv
-                        ? "bg-baseColor opacity-100 text-white"
-                        : "bg-white opacity-50"
-                    } border-slate-300 cursor-pointer hover:border-baseColor hover:opacity-100`}
-                  >
-                    Добавить тв (+{tariff.plusTv}руб)
+                  {/* icons and properties */}
+                  <div className="inline-flex flex-col sm:flex-row sm-flex mb-3 sm:mb-5">
+                    <div className="font-medium shadow-lg flex items-center rounded-md mr-5 pl-1 py-3 pr-3 w-40">
+                      <img
+                        className="w-10 mr-2"
+                        src="/donnetworkNet.gif"
+                        alt="img"
+                      />
+                      <div>
+                        <span className="block text-sm text-gray-700">
+                          Скорость:
+                        </span>
+                        <span className="block font-bold text-sm text-gray-800">
+                          {tariff.internetSpeed} Мбит/сек
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="font-medium shadow-lg flex items-center rounded-md py-3 pl-1 pr-3 w-40 sm:w-32 relative overflow-hidden">
+                      {!addTv && (
+                        <>
+                          <div className="w-[120%] h-[2px] bg-slate-300 absolute rotate-[25deg] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+                          <div className="w-[120%] h-[2px] bg-slate-300 absolute rotate-[-25deg] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+                        </>
+                      )}
+
+                      <img
+                        className="w-10 mr-2"
+                        src="/donntetworkTv.gif"
+                        alt="img"
+                      />
+                      <div>
+                        <span className="block text-sm text-gray-700">
+                          Каналов:
+                        </span>
+                        <span className="block font-bold text-sm text-gray-800">
+                          {tariff.channelsCount}
+                        </span>
+                      </div>
+                    </div>
                   </div>
+                </div>
+
+                <div
+                  className="border border-slate-200 inline-flex items-center p-2 rounded-xl cursor-pointer select-none hover:bg-slate-100 mb-4"
+                  onClick={() => setAddTv((s) => !s)}
+                >
+                  <button
+                    className={`${
+                      addTv ? "bg-baseColor" : "bg-baseColor-40"
+                    } h-[28px] w-[55px] rounded-2xl`}
+                  >
+                    <div
+                      className={`${
+                        addTv ? "translate-x-7" : "translate-x-[3px]"
+                      } h-[24px] w-[24px] rounded-full bg-white transition`}
+                    ></div>
+                  </button>
+
+                  <span className="mx-2 min-w-[145px] text-center text-base">
+                    {addTv ? (
+                      <span className="inline-flex items-center">
+                        Убрать ТВ -{tariff.plusTv} <BiRuble />
+                      </span>
+                    ) : (
+                      <span className="inline-flex items-center">
+                        Добавить ТВ +{tariff.plusTv} <BiRuble />
+                      </span>
+                    )}
+                  </span>
                 </div>
 
                 {!isError ? (
