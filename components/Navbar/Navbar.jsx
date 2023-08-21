@@ -102,7 +102,7 @@ const Navbar = () => {
 const NavContent = () => {
   return (
     <div className="pb-6 flex flex-col items-center md:flex-row md:items-baseline md:ml-10 md:pb-0 md:space-x-4">
-      <Link href="/">
+      <Link href="#hero">
         <a className="hover:bg-slate-100 hover:text-baseColor text-gray-800  px-3 py-2 rounded-md text-sm font-medium">
           Главная
         </a>

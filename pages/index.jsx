@@ -60,6 +60,7 @@ export default function Home({ newsList, heroData, advantagesData }) {
 
       {/* page start */}
       <Hero
+        id={"hero"}
         heroData={heroData}
         setIsOpen={setIsOpen}
         setIsSuccess={setIsSuccess}

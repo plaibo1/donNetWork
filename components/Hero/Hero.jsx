@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import GlobalModalButton from "../GlobalModalButton/GlobalModalButton";
 
-const Hero = ({ heroData, setIsSuccess, setUserNumber }) => {
+const Hero = ({ heroData, setIsSuccess, setUserNumber, id: sectionId }) => {
   let [categories] = useState({
     Старт: [
       {
@@ -58,7 +58,7 @@ const Hero = ({ heroData, setIsSuccess, setUserNumber }) => {
   });
 
   return (
-    <header className={`${style.hero}`}>
+    <header className={`${style.hero}`} id={sectionId}>
       <div className={style.hero__bg}>
         <div className={style.hero__bg__grid}></div>
         <div className={style.hero__bg__blur}></div>
