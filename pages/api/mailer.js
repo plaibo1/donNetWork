@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 const nodemailer = require("nodemailer");
 
 const transporter = nodemailer.createTransport(
@@ -16,7 +17,7 @@ const transporter = nodemailer.createTransport(
 );
 
 export default async (req, res) => {
-  const { phone, userFrom } = JSON.parse(req.body);
+  const { phone, userFrom, email, address } = JSON.parse(req.body);
 
   if (!phone) res.status(400).json({ status: "no phone" });
   if (!userFrom) res.status(400).json({ status: "no userFrom" });
@@ -30,6 +31,8 @@ export default async (req, res) => {
                 Заявка из: <br/> <strong>${userFrom}</strong>
               </p>
               <p><strong>📞Телефон: </strong> ${phone}</p>
+              <p><strong>Email: </strong> ${email || "не указан"}</p>
+              <p><strong>Адрес: </strong> ${address || "не указан"}</p>
             `,
     });
 

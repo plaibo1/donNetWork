@@ -4,23 +4,20 @@ import Link from "next/link";
 
 const Footer = () => {
   const footerData = {
-    "Для дома": [
-      { itemName: "Телефония", link: "#" },
-      { itemName: "Интернет (ADSL)", link: "#" },
-      { itemName: "Интернет (FTTB)", link: "#" },
-      { itemName: "Интернет (GePON)", link: "#" },
-    ],
-    "Для бизнеса": [
-      { itemName: "Телефония", link: "#" },
-      { itemName: "Интернет (ADSL)", link: "#" },
-      { itemName: "Интернет (ETTH)", link: "#" },
-      { itemName: "about4", link: "#" },
+    "Сайт ": [
+      { title: "Главная", indexLink: "#hero", link: "/" },
+      {
+        title: " Куда проводим",
+        indexLink: "#whatConnection",
+        link: "/#whatConnection",
+      },
+      { title: "Новости", indexLink: "#news", link: "/#news" },
+      { title: "ЧаВо", indexLink: "#faq", link: "/#faq" },
+      { title: "Контакты", indexLink: "#contacts", link: "/#contacts" },
     ],
     "О компании": [
-      { itemName: "Общие сведения", link: "#" },
-      { itemName: "Лицензии", link: "#" },
-      { itemName: "Контакты", link: "#" },
-      { itemName: "Обратная связь", link: "#" },
+      { title: "Лицензии", indexLink: "/license", link: "/license" },
+      { title: "Контакты", indexLink: "#contacts", link: "/#contacts" },
     ],
   };
 
@@ -35,10 +32,10 @@ const Footer = () => {
               <span className="text-2xl font-bold ml-3">Донтехсвязь</span>
             </div>
 
-            <div className="mb-5">
+            {/* <div className="mb-5">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut vitae
               fugiat itaque.
-            </div>
+            </div> */}
 
             {/* footer address */}
             <div className="w-[300px]">
@@ -73,12 +70,12 @@ const Footer = () => {
                   <ul className="list-inside mt-4 space-y-4">
                     {footerData[heading].map((item) => {
                       return (
-                        <li key={item.itemName}>
+                        <li key={item.title}>
                           <a
                             href={item.link}
                             className="hover:text-baseColor transition capitalize"
                           >
-                            {item.itemName}
+                            {item.title}
                           </a>
                         </li>
                       );

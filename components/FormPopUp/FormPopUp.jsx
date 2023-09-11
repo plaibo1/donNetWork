@@ -1,8 +1,8 @@
 import { useState } from "react";
-
-import style from "./formPopUp.module.sass";
 import Image from "next/image";
 import PhoneForm from "../PhoneForm/PhoneForm";
+
+import style from "./formPopUp.module.sass";
 
 const FormPopUp = ({ setIsOpen, setIsSuccess, setUserNumber }) => {
   const [showNumberForm, setShowNumberForm] = useState(true);

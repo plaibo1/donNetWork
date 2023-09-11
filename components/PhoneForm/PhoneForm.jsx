@@ -29,6 +29,7 @@ const PhoneForm = ({
     formState: { errors },
     handleSubmit,
     setError,
+    register,
     reset,
   } = useForm({ mode: "onBlur" });
 
@@ -41,40 +42,52 @@ const PhoneForm = ({
     }
 
     setLoaded(true);
-
-    try {
-      await fetch("/api/mailer", {
-        method: "post",
-        body: JSON.stringify({ ...data, userFrom }),
+    await fetch("/api/mailer", {
+      method: "post",
+      body: JSON.stringify({ ...data, userFrom }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.responseCode === 535) {
+          throw new Error("Something went wrong");
+        }
+        if (setIsOpen) setIsOpen(false);
+        if (setSelectedLayout) setSelectedLayout(null);
+        setIsSuccess(true);
+        setUserNumber(res.phone);
+        reset();
+        console.log("🚀 ~ onSubmit ~ res:", res);
       })
-        .then((res) => res.json())
-        .then((res) => {
-          if (res.responseCode === 535) {
-            throw new Error("Something went wrong");
-          }
-          if (setIsOpen) setIsOpen(false);
-          if (setSelectedLayout) setSelectedLayout(null);
-          setLoaded(false);
-          setIsSuccess(true);
-          setUserNumber(res.phone);
-          reset();
-          console.log("🚀 ~ onSubmit ~ res:", res);
-        });
-    } catch (err) {
-      setIsError(true);
-      if (setShowNumberForm) setShowNumberForm(false);
-      setLoaded(false);
-    }
+      .catch((err) => {
+        console.error("🚀", err);
+        setIsError(true);
+        if (setShowNumberForm) setShowNumberForm(false);
+      })
+      .finally(() => {
+        setLoaded(false);
+      });
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <label>
         <span className="block mb-3 font-medium text-base">
-          Контактный номер
+          Контактная информация
         </span>
 
         <>
+          <input
+            placeholder="Почта (не обязательно)"
+            {...register("email")}
+            className="block w-full mb-4 px-4 py-3 border-2 border-transparent text-base border-gray-200 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none"
+          />
+
+          <input
+            placeholder="Адрес (не обязательно)"
+            {...register("address")}
+            className="block w-full mb-4 px-4 py-3 border-2 border-transparent text-base border-gray-200 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none"
+          />
+
           <Controller
             control={control}
             name="phone"

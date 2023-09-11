@@ -1,4 +1,3 @@
-import * as contentful from "contentful";
 import Head from "next/head";
 import { useState } from "react";
 import FormPopUp from "../components/FormPopUp/FormPopUp";
@@ -6,20 +5,15 @@ import Hero from "../components/Hero/Hero";
 import Modal from "../components/Modal/Modal";
 import SwiperNews from "../components/SwiperNews/SwiperNews";
 import TariffSection from "../components/TariffSection/TariffSection";
-import TelephonizationIndexPage from "../components/TelephonizationIndexPage/TelephonizationIndexPage";
 import AnyQuestion from "../components/AnyQuestion/AnyQuestion";
 import Faq from "../components/Faq/Faq";
 import SuccessModal from "../components/SuccessModal/SuccessModal";
 import { client } from "../utils/client";
-import {
-  ADVANTAGES_ENTRY,
-  NEWS_ENTRY,
-  heroContentId,
-} from "../utils/variables";
-import { Advantages } from "../components/Advantages/Advantages";
-import { HowConnect } from "../components/HowConnect/HowConnect";
+import { NEWS_ENTRY, heroContentId } from "../utils/variables";
+import { Contacts } from "../components/Contacts/Contacts";
+// import { HowConnect } from "../components/HowConnect/HowConnect";
 
-export default function Home({ newsList, heroData, advantagesData }) {
+export default function Home({ newsList, heroData /*advantagesData*/ }) {
   const [isOpen, setIsOpen] = useState(false); // ModalFrom component
   const [isSuccess, setIsSuccess] = useState(false); // ModalSuccess component
   const [userNumber, setUserNumber] = useState(false); // user number from phoneForm
@@ -71,20 +65,22 @@ export default function Home({ newsList, heroData, advantagesData }) {
 
       <SwiperNews id="news" list={newsList} />
 
-      <TelephonizationIndexPage
+      {/* <TelephonizationIndexPage
         setIsOpen={setIsOpen}
         setIsSuccess={setIsSuccess}
         setUserNumber={setUserNumber}
         id="telephonization"
-      />
+      /> */}
 
-      <Advantages advantagesData={advantagesData} id="advantages" />
+      {/* <Advantages advantagesData={advantagesData} id="advantages" /> */}
 
-      <HowConnect />
+      {/* <HowConnect /> */}
 
       <AnyQuestion />
 
       <Faq id="faq" />
+
+      <Contacts id={"contacts"} />
     </div>
   );
 }
@@ -98,9 +94,9 @@ export async function getServerSideProps() {
       order: "-sys.createdAt",
     });
 
-    const advantagesData = await client.getEntries({
-      content_type: ADVANTAGES_ENTRY,
-    });
+    // const advantagesData = await client.getEntries({
+    //   content_type: ADVANTAGES_ENTRY,
+    // });
 
     const heroData = await client.getEntry(heroContentId);
 
@@ -108,7 +104,7 @@ export async function getServerSideProps() {
       props: {
         newsList: newsData,
         heroData: heroData.fields,
-        advantagesData: advantagesData.items.map(({ fields }) => fields),
+        // advantagesData: advantagesData.items.map(({ fields }) => fields),
       },
     };
   } catch {

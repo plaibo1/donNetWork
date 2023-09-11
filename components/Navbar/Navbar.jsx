@@ -1,18 +1,25 @@
 /* eslint-disable @next/next/no-img-element */
-import { Transition } from "@headlessui/react";
-import { Popover } from "@headlessui/react";
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-
-import { HiChevronDown } from "react-icons/hi";
-import { HiOutlineWifi } from "react-icons/hi";
-import { HiOutlinePhoneIncoming } from "react-icons/hi";
-
+import { useRouter } from "next/router";
 import style from "./navbar.module.scss";
+
+const navData = [
+  { title: "Главная", indexLink: "#hero", link: "/" },
+  {
+    title: " Куда проводим",
+    indexLink: "#whatConnection",
+    link: "/#whatConnection",
+  },
+  { title: "Новости", indexLink: "#news", link: "/#news" },
+  { title: "ЧаВо", indexLink: "#faq", link: "/#faq" },
+  { title: "Контакты", indexLink: "#contacts", link: "/#contacts" },
+];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { asPath } = useRouter();
 
   return (
     <>
@@ -23,11 +30,15 @@ const Navbar = () => {
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
               <div className="flex-shrink-0">
-                <img
-                  className="h-8 w-8"
-                  src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
-                  alt="Workflow"
-                />
+                <Link href="/">
+                  <a>
+                    <img
+                      className="h-8 w-8"
+                      src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
+                      alt="Workflow"
+                    />
+                  </a>
+                </Link>
               </div>
 
               <div className="hidden md:block">
@@ -90,7 +101,7 @@ const Navbar = () => {
               animate={{ opacity: 1, height: "auto", y: 0 }}
               exit={{ opacity: 0, height: 0, y: -100, scale: 0 }}
             >
-              <NavContent />
+              <NavContent asPath={asPath} />
             </motion.div>
           )}
         </AnimatePresence>
@@ -99,16 +110,23 @@ const Navbar = () => {
   );
 };
 
-const NavContent = () => {
+const NavContent = ({ asPath }) => {
   return (
     <div className="pb-6 flex flex-col items-center md:flex-row md:items-baseline md:ml-10 md:pb-0 md:space-x-4">
-      <Link href="#hero">
-        <a className="hover:bg-slate-100 hover:text-baseColor text-gray-800  px-3 py-2 rounded-md text-sm font-medium">
-          Главная
-        </a>
-      </Link>
+      {navData.map((item) => {
+        return (
+          <Link
+            key={item.link}
+            href={asPath === "/" ? item.indexLink : item.link}
+          >
+            <a className="hover:bg-slate-100 hover:text-baseColor text-gray-800  px-3 py-2 rounded-md text-sm font-medium">
+              {item.title}
+            </a>
+          </Link>
+        );
+      })}
 
-      <a
+      {/* <a
         href="#whatConnection"
         className="hover:bg-slate-100 text-gray-800 hover:text-baseColor px-3 py-2 rounded-md text-sm font-medium cursor-pointer"
       >
@@ -120,28 +138,28 @@ const NavContent = () => {
         className="hover:bg-slate-100 text-gray-800 hover:text-baseColor px-3 py-2 rounded-md text-sm font-medium cursor-pointer"
       >
         Новости
-      </a>
+      </a> */}
 
-      <a
+      {/* <a
         href="#telephonization"
         className="hover:bg-slate-100 text-gray-800 hover:text-baseColor px-3 py-2 rounded-md text-sm font-medium cursor-pointer"
       >
         Телефонизация
-      </a>
+      </a> */}
 
-      <a
+      {/* <a
         href="#advantages"
         className="hover:bg-slate-100 text-gray-800 hover:text-baseColor px-3 py-2 rounded-md text-sm font-medium cursor-pointer"
       >
         Преимущества
-      </a>
+      </a> */}
 
-      <a
+      {/* <a
         href="#faq"
         className="hover:bg-slate-100 text-gray-800 hover:text-baseColor px-3 py-2 rounded-md text-sm font-medium cursor-pointer"
       >
         ЧаВо
-      </a>
+      </a> */}
     </div>
   );
 };
