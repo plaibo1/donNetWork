@@ -61,7 +61,7 @@ export default function Home({ newsList, heroData /*advantagesData*/ }) {
         setUserNumber={setUserNumber}
       />
 
-      <TariffSection id="whatConnection" />
+      {/* <TariffSection id="whatConnection" /> */}
 
       <SwiperNews id="news" list={newsList} />
 

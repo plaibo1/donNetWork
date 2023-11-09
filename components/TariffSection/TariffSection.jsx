@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { ContainerLayout } from "../ContainerLayout/ContainerLayout";
-import { HeadingLeft } from "../Headings/Headings";
 
 import { TariffCard } from "./TariffCard";
 import { client } from "../../utils/client";
@@ -30,22 +28,15 @@ const TariffSection = ({ id: sectionId }) => {
   }, []);
 
   return (
-    <section id={sectionId}>
-      <ContainerLayout>
-        <HeadingLeft
-          title={"Куда проводим?"}
-          subTitle={"Выберите куда хотите подключить интернет"}
-        />
+    <div id={sectionId}>
+      <div className="flex flex-col sm:grid sm:gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {tariffData?.map((tariff, index) => (
+          <TariffCard key={index} tariff={tariff} />
+        ))}
 
-        <div className="flex flex-col sm:grid sm:gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {tariffData?.map((tariff, index) => (
-            <TariffCard key={index} tariff={tariff} />
-          ))}
-
-          <TariffOffice />
-        </div>
-      </ContainerLayout>
-    </section>
+        <TariffOffice />
+      </div>
+    </div>
   );
 };
 
