@@ -1,137 +1,124 @@
-import * as contentful from 'contentful';
-import Head from 'next/head'
-import { useState } from 'react'
-import FormPopUp from '../components/FormPopUp/FormPopUp'
-import Hero from '../components/Hero/Hero'
-import Modal from '../components/Modal/Modal'
-import SwiperNews from '../components/SwiperNews/SwiperNews'
-import TariffSection from '../components/TariffSection/TariffSection'
-import TelephonizationIndexPage from '../components/TelephonizationIndexPage/TelephonizationIndexPage'
-import AnyQuestion from '../components/AnyQuestion/AnyQuestion'
-import Faq from '../components/Faq/Faq'
-import SuccessModal from '../components/SuccessModal/SuccessModal'
+import Head from "next/head";
+import { useState } from "react";
+import FormPopUp from "../components/FormPopUp/FormPopUp";
+import Hero from "../components/Hero/Hero";
+import Modal from "../components/Modal/Modal";
+import SwiperNews from "../components/SwiperNews/SwiperNews";
+import TariffSection from "../components/TariffSection/TariffSection";
+import AnyQuestion from "../components/AnyQuestion/AnyQuestion";
+import Faq from "../components/Faq/Faq";
+import SuccessModal from "../components/SuccessModal/SuccessModal";
+import { client } from "../utils/client";
+import { NEWS_ENTRY, heroContentId } from "../utils/variables";
+import { Contacts } from "../components/Contacts/Contacts";
+// import { HowConnect } from "../components/HowConnect/HowConnect";
 
-
-
-
-export default function Home({newsList}) {
-
-  let [categories] = useState({
-    "Старт": [
-      {
-        tariffName: 'Старт',
-        title: 'Быстрее скачивай файлы, играй в онлайн-игры и смотри фильмы без зависаний на нескольких устройствах',
-        channelsCount: '136',
-        speed: '50 Мбит/сек',
-        price: '650',
-        image: '/start3.png',
-        categoryId: '1',
-      },
-    ],
-    "Комфорт": [
-      {
-        tariffName: 'Комфорт',
-        title: 'Быстрее скачивай файлы, играй в онлайн-игры и смотри фильмы без зависаний на нескольких устройствах',
-        channelsCount: '202',
-        speed: '100 Мбит/сек',
-        price: '800',
-        image: '/comfort.png',
-        categoryId: '2',
-      },
-    ],
-    "Премиум": [
-      {
-        tariffName: 'Премиум',
-        title: 'Сверхскоростной интернет для любых задач. Работай, играй, моментально скачивай файлы',
-        channelsCount: '297',
-        speed: '100 Мбит/сек',
-        price: '900',
-        image: '/premium.png',
-        categoryId: '3',
-      },
-    ],
-    "Максимум": [
-      {
-        tariffName: 'Максимум',
-        title: 'МЕГА Сверхскоростной интернет для любых задач. Работай, играй, моментально скачивай файлы',
-        channelsCount: '297',
-        speed: '500 Мбит/сек',
-        price: '1100',
-        image: '/maximum.png',
-        categoryId: '4',
-      },
-    ],
-  })
-
-  const [isOpen, setIsOpen] = useState(false) // ModalFrom component
-  const [isSuccess, setIsSuccess] = useState(false) // ModalSuccess component
-  const [userNumber, setUserNumber] = useState(false) // user number from phoneForm
+export default function Home({ newsList, heroData /*advantagesData*/ }) {
+  const [isOpen, setIsOpen] = useState(false); // ModalFrom component
+  const [isSuccess, setIsSuccess] = useState(false); // ModalSuccess component
+  const [userNumber, setUserNumber] = useState(false); // user number from phoneForm
 
   return (
     <div>
       <Head>
         <title>Донтехсвязь - интернет-провайдер в Ростове-на-Дону</title>
-        <meta name="description" content="Интернет, ТВ и услуги телефонизации в Ростове-на-Дону для дома и бизнеса" />
+        <meta
+          name="title"
+          title="Донтехсвязь - интернет-провайдер в Ростове-на-Дону"
+        />
+        <meta
+          name="og:title"
+          title="Донтехсвязь - интернет-провайдер в Ростове-на-Дону"
+        />
+        <meta
+          name="description"
+          content="Интернет, ТВ и услуги телефонизации в Ростове-на-Дону для дома и бизнеса"
+        />
+        <meta
+          name="og:description"
+          content="Интернет, ТВ и услуги телефонизации в Ростове-на-Дону для дома и бизнеса"
+        />
       </Head>
-
       <Modal modalStatus={isOpen} setModalStatus={setIsOpen}>
-        <FormPopUp setIsOpen={setIsOpen} setIsSuccess={setIsSuccess} setUserNumber={setUserNumber}/>
+        <FormPopUp
+          setIsOpen={setIsOpen}
+          setIsSuccess={setIsSuccess}
+          setUserNumber={setUserNumber}
+        />
       </Modal>
-
       <Modal modalStatus={isSuccess} setModalStatus={setIsSuccess}>
-        {
-          isSuccess && <SuccessModal setIsSuccess={setIsSuccess} userNumber={userNumber} />
-        }
+        {isSuccess && (
+          <SuccessModal setIsSuccess={setIsSuccess} userNumber={userNumber} />
+        )}
       </Modal>
-
 
       {/* page start */}
+      <Hero
+        id={"hero"}
+        heroData={heroData}
+        setIsOpen={setIsOpen}
+        setIsSuccess={setIsSuccess}
+        setUserNumber={setUserNumber}
+      />
 
-      <Hero setIsOpen={setIsOpen} categories={categories} setIsSuccess={setIsSuccess} setUserNumber={setUserNumber}/>
+      {/* <TariffSection id="whatConnection" /> */}
 
-      <TariffSection categories={categories} setIsSuccess={setIsSuccess} setUserNumber={setUserNumber}/>
+      <SwiperNews id="news" list={newsList} />
 
-      <SwiperNews list={newsList} />
+      {/* <TelephonizationIndexPage
+        setIsOpen={setIsOpen}
+        setIsSuccess={setIsSuccess}
+        setUserNumber={setUserNumber}
+        id="telephonization"
+      /> */}
 
-      <TelephonizationIndexPage setIsOpen={setIsOpen} setIsSuccess={setIsSuccess} setUserNumber={setUserNumber} />
+      {/* <Advantages advantagesData={advantagesData} id="advantages" /> */}
 
-      <AnyQuestion setIsOpen={setIsOpen} />
+      {/* <HowConnect /> */}
 
-      <Faq setIsOpen={setIsOpen} />
+      <AnyQuestion />
 
+      <Faq id="faq" />
+
+      <Contacts id={"contacts"} />
     </div>
-
-  )
+  );
 }
 
-// created client
-const client = contentful.createClient({
-  space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE,
-  accessToken: process.env.NEXT_PUBLIC_API_ACCESS_TOKEN,
-});
-
 // get data from contentful
-export async function getStaticProps() {
-
+export async function getServerSideProps() {
   try {
-    const data = await client.getEntries({
-      content_type: 'donNetworkNews',
-    })
+    const newsData = await client.getEntries({
+      content_type: NEWS_ENTRY,
+      limit: 15,
+      order: "-sys.createdAt",
+    });
 
-    // console.log("data------- ", data)
+    // const advantagesData = await client.getEntries({
+    //   content_type: ADVANTAGES_ENTRY,
+    // });
+
+    const heroData = await client.getEntry(heroContentId);
 
     return {
       props: {
-        newsList: data
-      }
-    }
-  }
-  catch {
+        newsList: newsData,
+        heroData: heroData.fields,
+        // advantagesData: advantagesData.items.map(({ fields }) => fields),
+      },
+    };
+  } catch {
     return {
       props: {
-        newsList: null
-      }
-    }
+        newsList: null,
+        heroData: {
+          headingBlack: "Домашний интернет",
+          accentText: "в Ростове-на-Дону",
+          description:
+            "Более 20000 абонентов в Советском, Железнодорожном и Ленинском районах Ростова-на-Дону.",
+        },
+        advantagesData: null,
+      },
+    };
   }
-
 }

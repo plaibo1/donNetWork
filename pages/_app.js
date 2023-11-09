@@ -1,7 +1,7 @@
-import NextNProgress from 'nextjs-progressbar'
-import Footer from '../components/Footer/Footer'
-import Navbar from '../components/Navbar/Navbar'
-import '../styles/globals.css'
+import NextNProgress from "nextjs-progressbar";
+import Footer from "../components/Footer/Footer";
+import Navbar from "../components/Navbar/Navbar";
+import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -13,12 +13,11 @@ function MyApp({ Component, pageProps }) {
         height={3}
         showOnShallow={true}
       />
-
       <Navbar />
-        <Component {...pageProps} />
+      <Component {...pageProps} />
       <Footer />
     </>
-  )
+  );
 }
 
-export default MyApp
+export default MyApp;
