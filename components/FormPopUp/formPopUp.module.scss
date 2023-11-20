@@ -1,0 +1,10 @@
+.formPopUpWidth {
+
+  @media screen and ( min-width: 605px ) {
+    width: 500px;
+  }
+
+  @media screen and ( min-width: 700px ) {
+    width: 550px;
+  }
+}

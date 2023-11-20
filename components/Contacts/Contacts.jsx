@@ -73,7 +73,7 @@ export const Contacts = ({ id: sectionId }) => {
       <ContainerLayout>
         <ScrollAnimationWrapper className="relative w-full">
           <motion.div variants={scrollAnimation}>
-            <div className="shadow-md rounded-xl  py-8 sm:py-14 px-6 sm:px-12 lg:px-16 w-full  z-10 bg-white-300 ">
+            <div className="rounded-3xl shadow-sm border border-slate-100 py-8 sm:py-12 px-6 sm:px-12 lg:px-16 w-full z-10 bg-white-300">
               <HeadingLeft title={"Контакты"} subTitle={null} />
 
               <div className="flex flex-col mt-10 mb-8 gap-3 sm:grid sm:grid-cols-2 sm:gap-x-12 sm:gap-y-3 md:gap-x-32">
