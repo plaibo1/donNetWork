@@ -28,7 +28,7 @@ const TariffSection = ({ id: sectionId }) => {
   }, []);
 
   return (
-    <div id={sectionId}>
+    <div id={sectionId} className="pt-20">
       <div className="flex flex-col sm:grid sm:gap-4 md:grid-cols-2 lg:grid-cols-3">
         {tariffData?.map((tariff, index) => (
           <TariffCard key={index} tariff={tariff} />

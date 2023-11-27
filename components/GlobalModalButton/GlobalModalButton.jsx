@@ -9,11 +9,25 @@ const GlobalModalButton = ({ children }) => {
   const [userNumber, setUserNumber] = useState(false); // user number from phoneForm
 
   useEffect(() => {
+    const handleKeyDown = (event) => {
+      switch (event.key) {
+        case "Escape":
+          setIsOpen(false);
+          break;
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
     if (isOpen) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "visible";
     }
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
   }, [isOpen]);
 
   return (

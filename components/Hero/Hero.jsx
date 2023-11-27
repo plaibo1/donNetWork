@@ -1,10 +1,11 @@
+/* eslint-disable @next/next/no-img-element */
 import { ContainerLayout } from "../ContainerLayout/ContainerLayout";
 import { motion } from "framer-motion";
 import GlobalModalButton from "../GlobalModalButton/GlobalModalButton";
 import TariffSection from "../TariffSection/TariffSection";
 import style from "./Hero.module.sass";
 
-const Hero = ({ heroData, setIsSuccess, setUserNumber, id: sectionId }) => {
+const Hero = ({ heroData, id: sectionId }) => {
   return (
     <header className={`${style.hero}`} id={sectionId}>
       <div className={style.hero__bg}>
@@ -13,7 +14,7 @@ const Hero = ({ heroData, setIsSuccess, setUserNumber, id: sectionId }) => {
       </div>
 
       <ContainerLayout>
-        <div className="pt-24 pb-16 flex justify-center">
+        <div className="pt-24 flex justify-center">
           <div
             className={`${style.dotsText} w-full md:w-[740px] text-center flex flex-col`}
           >

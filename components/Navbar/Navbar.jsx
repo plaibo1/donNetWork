@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/router";
@@ -21,6 +21,18 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { asPath } = useRouter();
 
+  useEffect(() => {
+    const closeMobileNav = () => {
+      setIsOpen(false);
+    };
+
+    window.addEventListener("resize", closeMobileNav);
+
+    return () => {
+      window.removeEventListener("resize", closeMobileNav);
+    };
+  }, []);
+
   return (
     <>
       <nav
@@ -33,8 +45,8 @@ const Navbar = () => {
                 <Link href="/">
                   <a>
                     <img
-                      className="h-8 w-8"
-                      src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
+                      className="w-12 h-12 sm:h-14 sm:w-14"
+                      src="./dts_logo.svg"
                       alt="Workflow"
                     />
                   </a>
@@ -126,40 +138,14 @@ const NavContent = ({ asPath }) => {
         );
       })}
 
-      {/* <a
-        href="#whatConnection"
-        className="hover:bg-slate-100 text-gray-800 hover:text-baseColor px-3 py-2 rounded-md text-sm font-medium cursor-pointer"
-      >
-        Куда проводим
-      </a>
-
       <a
-        href="#news"
-        className="hover:bg-slate-100 text-gray-800 hover:text-baseColor px-3 py-2 rounded-md text-sm font-medium cursor-pointer"
+        className="hover:bg-slate-100 hover:text-baseColor text-gray-800 px-3 py-2 rounded-md text-sm font-medium"
+        target="_blank"
+        href="https://lk.donnetwork.ru/"
+        rel="noreferrer"
       >
-        Новости
-      </a> */}
-
-      {/* <a
-        href="#telephonization"
-        className="hover:bg-slate-100 text-gray-800 hover:text-baseColor px-3 py-2 rounded-md text-sm font-medium cursor-pointer"
-      >
-        Телефонизация
-      </a> */}
-
-      {/* <a
-        href="#advantages"
-        className="hover:bg-slate-100 text-gray-800 hover:text-baseColor px-3 py-2 rounded-md text-sm font-medium cursor-pointer"
-      >
-        Преимущества
-      </a> */}
-
-      {/* <a
-        href="#faq"
-        className="hover:bg-slate-100 text-gray-800 hover:text-baseColor px-3 py-2 rounded-md text-sm font-medium cursor-pointer"
-      >
-        ЧаВо
-      </a> */}
+        Личный кабинет
+      </a>
     </div>
   );
 };

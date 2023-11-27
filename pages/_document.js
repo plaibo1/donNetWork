@@ -5,6 +5,7 @@ export default function Document() {
     <Html lang="ru">
       <Head>
         <link rel="icon" href="/favicon.ico" />
+        <meta name="theme-color" content="#ffffff" />
       </Head>
       <body>
         <Main />

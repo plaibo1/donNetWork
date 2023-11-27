@@ -28,14 +28,10 @@ const Footer = () => {
           {/* left side */}
           <div className="pb-5 mb-5 sm:px-5 sm:py-8 lg:py-0 border-b lg:border-none lg:w-[33%]">
             <div className="flex items-center mb-4">
-              <Image src="/rocket.png" alt="logo" width={40} height={50} />
+              <Image src="/dts_logo.svg" alt="logo" width={45} height={50} />
+
               <span className="text-2xl font-bold ml-3">Донтехсвязь</span>
             </div>
-
-            {/* <div className="mb-5">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut vitae
-              fugiat itaque.
-            </div> */}
 
             {/* footer address */}
             <div className="w-[300px]">

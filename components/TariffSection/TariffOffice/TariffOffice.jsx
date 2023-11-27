@@ -22,19 +22,21 @@ export const TariffOffice = () => {
         <div className="h-[235px] relative -z-10">
           <div className="h-72 w-72 rotate-x absolute -right-8">
             <Image
-              src={"/tariffOffice.png"}
+              src="/tariffOffice.png"
               layout="fill"
               objectFit="contain"
               alt="донтехсвязь tariff image"
+              blurDataURL="/tariffOffice-thumbnail.png"
+              placeholder="blur"
             />
           </div>
         </div>
 
         <div className="bg-slate-50 px-4 sm:px-6 py-7">
-          <div className="h-[110px] lg:h-20">Здесь описание офисов</div>
+          <div className="h-[110px] lg:h-20">Интернет для бизнеса</div>
 
           <span className="text-5xl font-bold inline-flex items-end mb-5">
-            <span className="text-3xl mr-2">от</span>1
+            <span className="text-3xl mr-2">от</span>1000
             <span className="text-base font-semibold ml-1">руб/мес</span>
           </span>
 
