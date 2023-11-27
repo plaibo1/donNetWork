@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import PhoneForm from "../../PhoneForm/PhoneForm";
 import ErrorAlert from "../../ErrorAlert/ErrorAlert";
+import { FaTimes } from "react-icons/fa";
 
 export const TariffOfficePopUp = ({
   isOpen,
@@ -13,14 +14,25 @@ export const TariffOfficePopUp = ({
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
+    const handleKeyDown = (event) => {
+      switch (event.key) {
+        case "Escape":
+          setIsOpen(false);
+          break;
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
     if (isOpen) {
       document.body.style.overflow = "hidden";
     }
 
     return () => {
       document.body.style.overflow = "visible";
+      window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [isOpen]);
+  }, [isOpen, setIsOpen]);
 
   return (
     <AnimatePresence>
@@ -36,14 +48,21 @@ export const TariffOfficePopUp = ({
             initial={{ y: -100 }}
             animate={{ y: 0 }}
             exit={{ y: -100 }}
-            className="w-[90%] sm:w-[500px] rounded-[12px] bg-white p-8 shadow-lg relative min-h-[300px]"
+            className="w-[90%]  max-h-[90%] overflow-y-auto sm:w-[500px] rounded-[12px] bg-white p-8 shadow-lg relative min-h-[300px]"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="text-xl">
-              Все тарифы индивидуальны, без учета трафика, укажите желаемую
-              скорость в заявке ООО &quot;Донтехсвязь&quot;также предлагает
-              услугу &quot;Фиксированный IP-адрес&quot;
+            <button
+              className="bg-red-400 z-20 p-2 absolute top-2 right-2 rounded-lg text-white active:scale-90 active:bg-red-500"
+              onClick={() => setIsOpen(false)}
+            >
+              <FaTimes />
+            </button>
+
+            <div className="text-2xl mb-2 font-black">
+              Все тарифы индивидуальны.
             </div>
+
+            <div className="text-lg">Оставьте заявку и мы перезвоним вам!</div>
 
             <div className="w-[80%] mx-auto min-h-[200px] relative">
               <Image

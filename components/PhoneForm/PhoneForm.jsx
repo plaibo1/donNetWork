@@ -79,13 +79,13 @@ const PhoneForm = ({
           <input
             placeholder="Почта (не обязательно)"
             {...register("email")}
-            className="block w-full mb-4 px-4 py-3 border-2 border-transparent text-base border-gray-200 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none"
+            className="block w-full mb-4 px-4 py-3 border-2 text-base border-gray-200 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none"
           />
 
           <input
             placeholder="Адрес (не обязательно)"
             {...register("address")}
-            className="block w-full mb-4 px-4 py-3 border-2 border-transparent text-base border-gray-200 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none"
+            className="block w-full mb-4 px-4 py-3 border-2 text-base border-gray-200 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none"
           />
 
           <Controller
@@ -101,7 +101,7 @@ const PhoneForm = ({
                 value={value}
                 onChange={onChange}
                 placeholder={"+7 (000) 00 00 00"}
-                className="block w-full px-4 py-3 border-2 border-transparent text-base border-gray-200 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none"
+                className="block w-full px-4 py-3 border-2 text-base border-gray-200 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none"
               />
             )}
           />

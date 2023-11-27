@@ -1,6 +1,6 @@
 import React from "react";
 import { FaTimes } from "react-icons/fa";
-import s from "./modal.module.sass";
+import s from "./modal.module.scss";
 
 const Modal = ({ modalStatus, setModalStatus, children }) => {
   return (

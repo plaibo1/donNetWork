@@ -2,7 +2,7 @@ import { useState } from "react";
 import Image from "next/image";
 import PhoneForm from "../PhoneForm/PhoneForm";
 
-import style from "./formPopUp.module.sass";
+import style from "./formPopUp.module.scss";
 
 const FormPopUp = ({ setIsOpen, setIsSuccess, setUserNumber }) => {
   const [showNumberForm, setShowNumberForm] = useState(true);
@@ -10,9 +10,9 @@ const FormPopUp = ({ setIsOpen, setIsSuccess, setUserNumber }) => {
 
   return (
     <div className={`${style.formPopUpWidth}`}>
-      <div className="relative z-10 px-5 pt-8 pb-8 sm:pb-12 h-auto bg-white rounded-lg sm:px-7">
+      <div className="relative z-10 px-5 pt-8 pb-8 sm:pb-12 h-fit bg-white rounded-lg sm:px-7">
         <h3 className="mb-6 text-2xl font-medium text-center">
-          Связаться со специалистом
+          {showNumberForm ? "Оставьте заявку" : "Связаться со специалистом"}
         </h3>
 
         <div className="mb-8 w-full flex justify-center">
@@ -41,7 +41,7 @@ const FormPopUp = ({ setIsOpen, setIsSuccess, setUserNumber }) => {
           </button>
         </div>
 
-        <div className="sm:h-72">
+        <div>
           {showNumberForm ? (
             <>
               <p className="text-gray-500 text-xs md:text-base mb-3">

@@ -5,6 +5,7 @@ import { GrChannel } from "react-icons/gr";
 import { TariffPopUp } from "./TariffPopUp/TariffPopUp";
 import Modal from "../Modal/Modal";
 import SuccessModal from "../SuccessModal/SuccessModal";
+
 export const TariffCard = ({ tariff }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false); // ModalSuccess component
@@ -22,7 +23,7 @@ export const TariffCard = ({ tariff }) => {
           <span className="flex-col flex items-start">
             <div className="bg-white shadow-sm px-3 rounded-lg inline-flex items-center mb-2">
               <BsLightningCharge className="mr-1" />
-              Скорость от:
+              Скорость до:
               <span className="font-semibold ml-1">
                 {tariff.minimalInternetSpeed ? tariff.minimalInternetSpeed : 50}{" "}
                 Мбит/сек
@@ -46,6 +47,8 @@ export const TariffCard = ({ tariff }) => {
               layout="fill"
               objectFit="contain"
               alt="донтехсвязь tariff image"
+              placeholder="blur"
+              blurDataURL="./rocket.png"
             />
           </div>
         </div>
