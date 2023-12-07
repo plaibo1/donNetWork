@@ -44,11 +44,12 @@ export const TariffCard = ({ tariff }) => {
           <div className="h-72 w-72 rotate-x absolute -bottom-6 -right-8">
             <Image
               src={`https:${tariff.image.fields.file.url}`}
-              layout="fill"
+              width={288}
+              height={288}
               objectFit="contain"
               alt="донтехсвязь tariff image"
+              blurDataURL={`https:${tariff.thumbnail.fields.file.url}`}
               placeholder="blur"
-              blurDataURL="./rocket.png"
             />
           </div>
         </div>

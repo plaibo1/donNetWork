@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import PhoneForm from "../../PhoneForm/PhoneForm";
 import { getUserFromTariffHTMLString } from "../../../utils/variables";
 import ErrorAlert from "../../ErrorAlert/ErrorAlert";
-import { BiRuble } from "react-icons/bi";
 import { PopUpComboToggler } from "./TariffPopUpContentElements/PopUpComboToggler";
 import { PopUpTv } from "./TariffPopUpContentElements/PopUpTv";
 import { PopUpInternet } from "./TariffPopUpContentElements/PopUpInternet";

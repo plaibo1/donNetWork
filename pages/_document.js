@@ -6,6 +6,7 @@ export default function Document() {
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta name="theme-color" content="#ffffff" />
+        <meta property="og:image" content="/DTS_OG_CARD.png" />
       </Head>
       <body>
         <Main />
