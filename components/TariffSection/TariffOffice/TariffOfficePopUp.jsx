@@ -55,11 +55,17 @@ export const TariffOfficePopUp = ({
               <FaTimes />
             </button>
 
-            <div className="text-2xl mb-2 font-black">
-              Все тарифы индивидуальны.
-            </div>
+            <div className="text-center mb-2">
+              <div className="text-3xl font-bold py-2">Офис</div>
 
-            <div className="text-lg">Оставьте заявку и мы перезвоним вам!</div>
+              <div className="text-lg font-semibold">
+                Все тарифы индивидуальны.
+              </div>
+
+              <div className="text-lg ">
+                Оставьте заявку и мы перезвоним вам!
+              </div>
+            </div>
 
             <div className="w-[80%] mx-auto min-h-[200px] relative">
               <Image

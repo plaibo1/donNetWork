@@ -5,12 +5,12 @@ import { GrChannel } from "react-icons/gr";
 import { TariffPopUp } from "./TariffPopUp/TariffPopUp";
 import Modal from "../Modal/Modal";
 import SuccessModal from "../SuccessModal/SuccessModal";
+import { prettifyTariffsData } from "../../utils/prettifyTariffsData";
 
 export const TariffCard = ({ tariff }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false); // ModalSuccess component
   const [userNumber, setUserNumber] = useState(false); // user number from phoneForm
-  const currentTariffsData = tariff.relationTo.map(({ fields }) => fields);
 
   return (
     <>
@@ -74,7 +74,7 @@ export const TariffCard = ({ tariff }) => {
       </div>
 
       <TariffPopUp
-        tariffs={currentTariffsData}
+        tariffData={prettifyTariffsData(tariff)}
         setIsOpen={setIsOpen}
         isOpen={isOpen}
         setUserNumber={setUserNumber}
