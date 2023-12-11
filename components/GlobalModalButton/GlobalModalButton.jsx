@@ -3,7 +3,7 @@ import Modal from "../Modal/Modal";
 import FormPopUp from "../FormPopUp/FormPopUp";
 import SuccessModal from "../SuccessModal/SuccessModal";
 
-const GlobalModalButton = ({ children }) => {
+const GlobalModalButton = ({ children, fromTariffPath = null }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false); // ModalSuccess component
   const [userNumber, setUserNumber] = useState(false); // user number from phoneForm
@@ -39,6 +39,7 @@ const GlobalModalButton = ({ children }) => {
           setIsOpen={setIsOpen}
           setIsSuccess={setIsSuccess}
           setUserNumber={setUserNumber}
+          fromTariffPath={fromTariffPath}
         />
       </Modal>
 

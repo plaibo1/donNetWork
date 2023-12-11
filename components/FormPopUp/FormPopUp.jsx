@@ -4,7 +4,12 @@ import PhoneForm from "../PhoneForm/PhoneForm";
 
 import style from "./formPopUp.module.scss";
 
-const FormPopUp = ({ setIsOpen, setIsSuccess, setUserNumber }) => {
+const FormPopUp = ({
+  setIsOpen,
+  setIsSuccess,
+  setUserNumber,
+  fromTariffPath,
+}) => {
   const [showNumberForm, setShowNumberForm] = useState(true);
   const [isError, setIsError] = useState(false);
 
@@ -54,7 +59,7 @@ const FormPopUp = ({ setIsOpen, setIsSuccess, setUserNumber }) => {
                 setIsError={setIsError}
                 setShowNumberForm={setShowNumberForm}
                 setUserNumber={setUserNumber}
-                userFrom={"Главная форма"}
+                userFrom={fromTariffPath || "Главная форма"}
               />
             </>
           ) : (
