@@ -48,6 +48,7 @@ export default function TariffPage({ tariffData }) {
             blurDataURL={`https:${tariffData.thumbnail.fields.file.url}`}
             placeholder="blur"
           />
+
           <h1 className="text-2xl md:text-5xl font-extrabold mb-3 leading-[1.1]">
             <Link href="/#whatConnection">
               <a className="hover:text-slate-400">Тарифы</a>

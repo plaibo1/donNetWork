@@ -1,4 +1,3 @@
-import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import PhoneForm from "../../PhoneForm/PhoneForm";
@@ -35,16 +34,13 @@ export const TariffOfficePopUp = ({
   }, [isOpen, setIsOpen]);
 
   return (
-    <AnimatePresence>
+    <>
       {isOpen && (
         <div
           className="w-full h-screen flex items-center justify-center fixed top-0 left-0 z-[99999] backdrop-blur-md"
           onClick={() => setIsOpen(false)}
         >
-          <motion.div
-            initial={{ y: -100 }}
-            animate={{ y: 0 }}
-            exit={{ y: -100, opacity: 0 }}
+          <div
             className="w-[90%]  max-h-[90%] overflow-y-auto sm:w-[500px] rounded-[12px] bg-white p-8 shadow-lg relative min-h-[300px]"
             onClick={(e) => e.stopPropagation()}
           >
@@ -88,9 +84,9 @@ export const TariffOfficePopUp = ({
             ) : (
               <ErrorAlert setIsError={setIsError} />
             )}
-          </motion.div>
+          </div>
         </div>
       )}
-    </AnimatePresence>
+    </>
   );
 };
