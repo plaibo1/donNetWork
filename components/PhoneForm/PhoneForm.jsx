@@ -3,7 +3,6 @@ import NumberFormat from "react-number-format";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { useState } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { FaTimes } from "react-icons/fa";
 
 const PhoneForm = ({
@@ -119,7 +118,7 @@ const PhoneForm = ({
 
       <div className="block">
         <span className="text-sm block mb-1">Звоним с 10:00 до 21:00.</span>
-        <motion.button
+        <button
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.1 }}
@@ -131,7 +130,7 @@ const PhoneForm = ({
           ) : (
             "Жду звонка"
           )}
-        </motion.button>
+        </button>
       </div>
 
       <div className="w-full mt-4 text-sm text-center text-gray-500">

@@ -1,7 +1,6 @@
 import { Disclosure } from "@headlessui/react";
 import { HiOutlineChevronUp } from "react-icons/hi";
 import { ContainerLayout } from "../ContainerLayout/ContainerLayout";
-import { AnimatePresence, motion } from "framer-motion";
 import { HeadingLeft } from "../Headings/Headings";
 import { ButtonBase } from "../Buttons/Buttons";
 import GlobalModalButton from "../GlobalModalButton/GlobalModalButton";
@@ -99,12 +98,9 @@ export default function Faq({ id: sectionId }) {
                     </Disclosure.Button>
 
                     <Disclosure.Panel className="px-3 sm:px-6 pt-5 text-lg sm:text-xl text-gray-900">
-                      <motion.div
-                        initial={{ height: 0 }}
-                        animate={{ height: "auto" }}
-                      >
+                      <div initial={{ height: 0 }} animate={{ height: "auto" }}>
                         {item.answer}
-                      </motion.div>
+                      </div>
                     </Disclosure.Panel>
                   </>
                 )}

@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { ButtonBase } from "../Buttons/Buttons";
 import { ContainerLayout } from "../ContainerLayout/ContainerLayout";
-import { motion, AnimatePresence } from "framer-motion";
 import { BsTelephone } from "react-icons/bs";
-import Image from "next/image";
 import PhoneForm from "../PhoneForm/PhoneForm";
 import { FaTimes } from "react-icons/fa";
 import ErrorAlert from "../ErrorAlert/ErrorAlert";
@@ -19,7 +17,7 @@ const TelephonizationIndexPage = ({
   return (
     <section id={sectionId}>
       <ContainerLayout>
-        <motion.div
+        <div
           className="p-6 sm:p-16 md:p-20 rounded-2xl bg-sweetCorn"
           layoutId="TelephonizationIndexPage"
         >
@@ -49,16 +47,16 @@ const TelephonizationIndexPage = ({
               +7 (863) 202-00-00
             </a>
           </div>
-        </motion.div>
+        </div>
       </ContainerLayout>
 
       {selectedId && (
-        <motion.div
+        <div
           className="w-full h-screen flex justify-center items-center 
             fixed top-0 left-0 z-max myBg backdrop-blur-sm"
           onClick={() => setSelectedId(null)}
         >
-          <motion.div
+          <div
             onClick={(e) => e.stopPropagation()}
             className="p-6 sm:p-16 md:p-20 rounded-2xl bg-sweetCorn overflow-hidden relative
               w-[90%] sm:w-[80%] md:w-[600px]"
@@ -93,8 +91,8 @@ const TelephonizationIndexPage = ({
                 <ErrorAlert setIsError={setIsError} />
               )}
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       )}
     </section>
   );

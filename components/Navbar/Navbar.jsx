@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/router";
 import style from "./navbar.module.scss";
 
@@ -106,17 +105,11 @@ const Navbar = () => {
           </div>
         </div>
 
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0, y: -100 }}
-              animate={{ opacity: 1, height: "auto", y: 0 }}
-              exit={{ opacity: 0, height: 0, y: -100, scale: 0 }}
-            >
-              <NavContent asPath={asPath} />
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {isOpen && (
+          <div>
+            <NavContent asPath={asPath} />
+          </div>
+        )}
       </nav>
     </>
   );

@@ -1,9 +1,8 @@
 import React from "react";
-import { motion } from "framer-motion";
 
 const ErrorAlert = ({ setIsError }) => {
   return (
-    <motion.div className="w-full bg-red-500 text-white px-5 pt-3 pb-8 mb-5 rounded-lg relative">
+    <div className="w-full bg-red-500 text-white px-5 pt-3 pb-8 mb-5 rounded-lg relative">
       <div className="mb-5 text-base sm:text-xl">
         Произошла ошибка. Сейчас ведутся работы на сервере, но вы можете оставть
         заявку по бесплатному номеру: <br />
@@ -20,7 +19,7 @@ const ErrorAlert = ({ setIsError }) => {
       >
         ок
       </button>
-    </motion.div>
+    </div>
   );
 };
 

@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import React from "react";
 import { ContainerLayout } from "../ContainerLayout/ContainerLayout";
 import GlobalModalButton from "../GlobalModalButton/GlobalModalButton";
@@ -29,12 +28,12 @@ const AnyQuestion = () => {
         </div>
 
         <GlobalModalButton>
-          <motion.button
+          <button
             className="w-full sm:w-[340px] md:w-[370px] flex items-center justify-center px-3 py-3 border border-transparent 
                     text-base font-medium rounded-md text-white bg-baseColor hover:bg-baseColor-10 md:py-4 md:text-lg md:px-10"
           >
             Заказать обратный звонок
-          </motion.button>
+          </button>
         </GlobalModalButton>
       </div>
     </ContainerLayout>
