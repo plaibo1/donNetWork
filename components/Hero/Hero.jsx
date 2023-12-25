@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 import { ContainerLayout } from "../ContainerLayout/ContainerLayout";
-import { motion } from "framer-motion";
 import GlobalModalButton from "../GlobalModalButton/GlobalModalButton";
 import TariffSection from "../TariffSection/TariffSection";
 import style from "./Hero.module.sass";
@@ -33,14 +32,12 @@ const Hero = ({ heroData, id: sectionId }) => {
             <div className="mt-5 sm:mt-8 flex justify-center">
               <div className="mt-3 sm:mt-0">
                 <GlobalModalButton>
-                  <motion.button
-                    initial={{ opacity: 0, x: -50 }}
-                    animate={{ opacity: 1, x: 0 }}
+                  <button
                     className="w-full flex items-center justify-center px-8 py-3 border border-transparent 
                       text-base font-medium rounded-md text-baseColor bg-indigo-100 hover:bg-indigo-200 md:py-4 md:text-lg md:px-10"
                   >
                     Оставить заявку
-                  </motion.button>
+                  </button>
                 </GlobalModalButton>
               </div>
             </div>
