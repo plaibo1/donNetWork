@@ -34,8 +34,8 @@ const PrivacyPage = ({ licenses }) => {
                     rel="noreferrer"
                   >
                     <Image
-                      width={fields.image.fields.file.details.image.width / 3}
-                      height={fields.image.fields.file.details.image.height / 3}
+                      width={413}
+                      height={585}
                       // layout="responsive"
                       objectFit="contain"
                       src={`https:${fields.image.fields.file.url}`}
