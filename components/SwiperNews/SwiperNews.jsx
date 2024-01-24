@@ -14,7 +14,8 @@ import { HeadingLeft } from "../Headings/Headings";
 
 export default function SwiperNews({ list, id: sectionId }) {
   const [selectedItem, setSelectedItem] = useState(null);
-  if (!list) return null;
+
+  if (!Boolean(list?.items.length)) return null;
 
   return (
     <section id={sectionId}>
@@ -84,9 +85,6 @@ export default function SwiperNews({ list, id: sectionId }) {
 
         {selectedItem?.sys.id && (
           <div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
             onMouseDown={() => setSelectedItem(null)}
             className="w-full h-screen flex justify-center items-center 
             fixed top-0 left-0 z-max myBg backdrop-blur-sm"
