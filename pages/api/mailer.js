@@ -3,8 +3,8 @@ const nodemailer = require("nodemailer");
 
 const transporter = nodemailer.createTransport(
   {
-    host: "smtp.mail.ru",
-    port: 465,
+    host: process.env.NEXT_PUBLIC_EMAIL_HOST,
+    port: process.env.NEXT_PUBLIC_EMAIL_PORT,
     secure: true,
     auth: {
       user: process.env.NEXT_PUBLIC_EMAIL_LOGIN,
@@ -12,7 +12,7 @@ const transporter = nodemailer.createTransport(
     },
   },
   {
-    from: "«ООО» Донтехсвязь🌐 <playboi.2000@mail.ru>",
+    from: `«ООО» Донтехсвязь🌐 <${process.env.NEXT_PUBLIC_EMAIL_LOGIN}>`,
   }
 );
 
