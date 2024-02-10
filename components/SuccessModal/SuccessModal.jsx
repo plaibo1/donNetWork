@@ -8,7 +8,7 @@ const SuccessModal = ({ setIsSuccess, userNumber }) => {
   return (
     <div
       onClick={fire}
-      className="w-[300px] sm:w-[500px] h-[430px] p-8 bg-white text-center flex flex-col justify-between select-none"
+      className="w-full h-[430px] p-8 bg-white text-center flex flex-col justify-between select-none"
     >
       <div>
         <div className="text-2xl font-bold mb-3 sm:text-4xl">

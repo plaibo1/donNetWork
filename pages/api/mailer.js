@@ -39,6 +39,6 @@ export default async (req, res) => {
     res.status(200).json({ phone, status: "ok" });
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ ...err, JAMAL: "123" });
+    return res.status(400).json({ ...err, customInfo: "mailer failed" });
   }
 };
