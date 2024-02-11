@@ -24,7 +24,7 @@ export default async (req, res) => {
 
   try {
     await transporter.sendMail({
-      to: "playboi.2000@mail.ru",
+      to: process.env.NEXT_PUBLIC_EMAIL_LOGIN,
       subject: `🖖 Новая заявка`,
       html: `
               <p style='font-size: 25px; margin-bottom: 10px'>
