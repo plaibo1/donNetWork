@@ -18,6 +18,7 @@ const Footer = () => {
     "О компании": [
       { title: "Лицензии", indexLink: "/license", link: "/license" },
       { title: "Контакты", indexLink: "#contacts", link: "/#contacts" },
+      { title: "Реквизиты", indexLink: "/requisites", link: "/requisites" },
     ],
   };
 
